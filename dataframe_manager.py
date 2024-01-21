@@ -1,19 +1,6 @@
 import os
-import asyncio
-import websockets
 import json
-import time
 import pandas as pd
-
-local_url = "http://127.0.0.1:31039/webui/index.html?guid=16750297169692417202"
-
-port = local_url.split(":")[2].split("/")[0]
-guid = local_url.split("guid=")[1]
-
-import os
-import pandas as pd
-import json
-import traceback
 
 def process_leaderboard_data_and_save(json_data):
     payload = json_data.get("payload", {})
@@ -110,39 +97,3 @@ def process_leaderboard_data_and_save(json_data):
                     print(e)
 
     return dataframe
-
-async def get_websocket_message(message=""):
-    if message == "":
-        message = {
-            "message": ""
-        }
-
-    uri = "ws://127.0.0.1:{0}/webui-socket/{1}".format(port, guid)
-
-    async with websockets.connect(uri) as websocket:
-        await websocket.send(json.dumps(message))
-        #print(f"Sent message")
-
-        response = await websocket.recv()
-        #print(f"Received response")
-
-        json_payload = json.loads(response)
-
-        return json_payload
-
-
-
-async def main():
-
-    while True:
-        try:
-            json_payload = await get_websocket_message()
-            process_leaderboard_data_and_save(json_data=json_payload)
-            print("Inserted Data !")
-
-        except Exception as e:
-            print(e)
-            traceback.print_exc()
-
-if __name__ == "__main__":
-    asyncio.run(main())

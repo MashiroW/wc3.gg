@@ -2,7 +2,10 @@
 import time
 import pyautogui
 import pygetwindow as gw
+import psutil
+import subprocess
 import os
+import signal
 from pathlib import Path
 
 from old_files.dataframe_saver import process_leaderboard_data
@@ -248,10 +251,58 @@ def set_season(TargetSeason, sleeping_time=1):
 
 def startup_sequence():
 
+    def execute_command(exe_path, args):
+        try:
+            subprocess.Popen([exe_path] + args, shell=True)
+            print(f"Executable '{exe_path}' started successfully.")
+        except Exception as e:
+            print(f"Error starting '{exe_path}': {e}")
+
+    def get_pid(process_name):
+        pid = None
+
+        for process in psutil.process_iter(['pid', 'name']):
+            if process.info['name'] == process_name:
+                pid = process.info['pid']
+                return pid
+
+    def kill_process_by_pid(pid):
+        try:
+            os.kill(pid, signal.SIGTERM)
+            print(f"Process with PID {pid} terminated successfully.")
+        except ProcessLookupError:
+            print(f"No process found with PID {pid}.")
+        except Exception as e:
+            print(f"Error terminating process with PID {pid}: {e}")
+    
+    def execute_game():       
+        process_name = "Warcraft III.exe"
+        exe_path = r'H:\Program Files (x86)\Battle.net\Battle.net.exe'
+        command_args = ['--exec=launch W3']
+
+        if get_pid(process_name=process_name) == None:
+            execute_command(exe_path, command_args)
+        else:
+            kill_process_by_pid(pid=get_pid(process_name=process_name))
+            execute_command(exe_path, command_args)
+        
+        print("Waiting for War3 PID...")
+        while get_pid(process_name=process_name) == None:
+            pass
+        
+        print("Waiting for Main Menu...")
+        while check_element_in_warcraft_window(ressources_paths["multiplayer"], confidence_threshold=0.8) != True:
+            pass
+
+        time.sleep(2) 
+        print("Startup over")
+
+    execute_game()
+    
     sequence = [ressources_paths["multiplayer"],
                 ressources_paths["ladderboard"]]
-
-    return sequence
+    
+    sequence_player(sequence=sequence)
 
 def sequence_player(sequence): # Plays a sequence of images to click in an array. If some element isn't found it will try the previous action.
     timeout_seconds = 10
@@ -288,16 +339,7 @@ def press_next_till_end(sleeping_time=0):
 
 def leaderboard_parser():
 
-    for season in ["previous"]:
-        for gamemode in ["confrontation_2v2", "confrontation_3v3", "confrontation_4v4"]:
-
-            print("Settings - Season: {0} - Race {1} - Gamemode {2}".format(season, "N/A", gamemode))
-
-            set_season(TargetSeason=season, sleeping_time=0.5)
-            set_gamemode(TargetGamemode=gamemode, sleeping_time=0.5)
-
-            # Faire le next
-            press_next_till_end()
+    startup_sequence()
 
     for season in ["previous"]:
         for gamemode in ["1v1", "2v2", "3v3", "4v4", "cps"]: # Possibilities: ["1v1", "2v2", "3v3", "4v4", "cps"]
@@ -309,16 +351,29 @@ def leaderboard_parser():
                 set_gamemode(TargetGamemode=gamemode, sleeping_time=0.5)
                 set_race(TargetRace=race, sleeping_time=0.5)
 
-                # Faire le next
+                # Go through every page
                 press_next_till_end()
+
+                # Reboot for fluidity
+                startup_sequence()
+
+    for season in ["previous"]:
+        for gamemode in ["confrontation_2v2", "confrontation_3v3", "confrontation_4v4"]:
+
+            print("Settings - Season: {0} - Race {1} - Gamemode {2}".format(season, "N/A", gamemode))
+
+            set_season(TargetSeason=season, sleeping_time=0.5)
+            set_gamemode(TargetGamemode=gamemode, sleeping_time=0.5)
+
+            # Go through every page
+            press_next_till_end()
+
+            # Reboot for fluidity
+            startup_sequence()
     
     click_element_in_warcraft_window(ressources_paths["back"], confidence_threshold=0.8, sleeping_time=1)
-
-
 
 if __name__ == "__main__":
 
     ressources_paths = collect_image_paths("./ressources/")
-
-    sequence_player(sequence=startup_sequence())
     leaderboard_parser()

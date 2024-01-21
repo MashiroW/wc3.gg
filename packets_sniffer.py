@@ -1,6 +1,7 @@
 import socket
 import re
 import json  # Added import for JSON parsing
+from dataframe_manager import process_leaderboard_data_and_save
 
 def extract_specific_json(decoded_packet):
     # Use a regular expression to find JSON-like strings in the packet
@@ -22,28 +23,32 @@ def process_packet(hex_packet):
         specific_json = extract_specific_json(decoded_packet)
         if specific_json:
             print(specific_json)
+            process_leaderboard_data_and_save(json_data=specific_json)
+            print("---------------------------")
         else:
-            print("No valid JSON with 'messageType':'UpdateLeaderboardData' found in the packet.")
+            #print("No valid JSON with 'messageType':'UpdateLeaderboardData' found in the packet.")
+            pass
     except UnicodeDecodeError:
         print("Unable to decode as UTF-8. Printing raw hex:")
         print(hex_packet)
 
-# Use loopback address directly
-selected_interface = '127.0.0.1'
 
-# Create a socket to capture packets
-sock = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_IP)
-sock.bind((selected_interface, 0))
+if __name__ == "__main__":
+    # Use loopback address directly
+    selected_interface = '127.0.0.1'
 
-# Set promiscuous mode
-sock.ioctl(socket.SIO_RCVALL, socket.RCVALL_ON)
+    # Create a socket to capture packets
+    sock = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_IP)
+    sock.bind((selected_interface, 0))
 
-try:
-    while True:
-        pkt, _ = sock.recvfrom(65535)
-        process_packet(pkt)
-        print("---------------------------")
+    # Set promiscuous mode
+    sock.ioctl(socket.SIO_RCVALL, socket.RCVALL_ON)
 
-except KeyboardInterrupt:
-    # Turn off promiscuous mode on KeyboardInterrupt
-    sock.ioctl(socket.SIO_RCVALL, socket.RCVALL_OFF)
+    try:
+        while True:
+            pkt, _ = sock.recvfrom(65535)
+            process_packet(pkt)
+
+    except KeyboardInterrupt:
+        # Turn off promiscuous mode on KeyboardInterrupt
+        sock.ioctl(socket.SIO_RCVALL, socket.RCVALL_OFF)
