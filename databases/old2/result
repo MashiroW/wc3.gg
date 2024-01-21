@@ -1,0 +1,124 @@
+Processing file: ./databases\wc3_S3_1v1_all.csv
+Duplicate rows found in the following rows:
+ rank  mmr searchRace      race       toonname           battleTag avatarId  division  wins  losses  draws
+ 5875 5263        all    undead   ['canonInD']  ['canonInD#11118']     ['']         4     7       3      0
+ 5876 5263        all    undead   ['canonInD']  ['canonInD#11118']     ['']         4     7       3      0
+10225 5006        all     human  ['WelkinDer']  ['WelkinDer#1744']     ['']         4     7       7      0
+10226 5006        all     human  ['WelkinDer']  ['WelkinDer#1744']     ['']         4     7       7      0
+22225 4506        all       orc   ['iitzbubz']   ['iitzbubz#1132']     ['']         3    47      45      0
+22226 4506        all       orc   ['iitzbubz']   ['iitzbubz#1132']     ['']         3    47      45      0
+26825 4334        all    random  ['BryanFury']  ['BryanFury#2549'] ['p109']         3    25      25      0
+26826 4334        all    random  ['BryanFury']  ['BryanFury#2549'] ['p109']         3    25      25      0
+31700 4141        all night_elf      ['猛猛长城长']      ['猛猛长城长#3275']     ['']         3    14      22      0
+31701 4141        all night_elf      ['猛猛长城长']      ['猛猛长城长#3275']     ['']         3    14      22      0
+34250 4026        all     human    ['Shklyar']   ['Shklyar#21189'] ['p068']         3     0       6      0
+34251 4026        all     human    ['Shklyar']   ['Shklyar#21189'] ['p068']         3     0       6      0
+34275 4025        all night_elf ['SSJTurkOne'] ['SSJTurkOne#1631']     ['']         3     5      13      0
+34276 4025        all night_elf ['SSJTurkOne'] ['SSJTurkOne#1631']     ['']         3     5      13      0
+34900 3994        all     human     ['Sakkee']    ['Sakkee#21749'] ['p027']         2    17      33      0
+34901 3994        all     human     ['Sakkee']    ['Sakkee#21749'] ['p027']         2    17      33      0
+40050 3618        all     human   ['Arthas93']  ['Arthas93#21735']     ['']         2    13      24      0
+40051 3618        all     human   ['Arthas93']  ['Arthas93#21735']     ['']         2    13      24      0
+Discontinuous ranks found. Missing ranks:
+[35516, 35517, 35518, 33826, 33827, 33828, 33829, 33830, 33831, 33832, 33833, 33834, 33835, 33836, 33837, 33838, 33839, 33840, 33841, 33842, 33843, 33844, 33845, 33846, 33847, 33848, 33849, 33850, 35501, 35502, 10926, 10927, 10928, 10929, 10930, 10931, 10932, 10933, 10934, 10935, 10936, 10937, 10938, 10939, 10940, 10941, 10942, 10943, 10944, 10945, 10946, 10947, 10948, 10949, 10950, 35519, 35520, 35521, 35522, 35523, 35524, 35525, 39701, 39702, 39703, 39704, 39705, 39706, 39707, 39708, 39709, 39710, 39711, 39712, 39713, 39714, 39715, 
+39716, 39717, 39718, 39719, 39720, 39721, 39722, 39723, 39724, 39725, 21826, 21827, 21828, 21829, 21830, 21831, 21832, 21833, 21834, 21835, 21836, 21837, 21838, 21839, 21840, 21841, 21842, 21843, 21844, 21845, 21846, 21847, 21848, 21849, 21850, 35503, 35504, 35505, 35506, 35507, 35508, 35509, 35510, 35511, 35512, 35513, 35514, 35515]
+Press a key for the next file... 
+--------------------------------
+Processing file: ./databases\wc3_S3_1v1_human.csv
+No duplicate rows found.
+No discontinuous ranks found.
+Press a key for the next file...
+--------------------------------
+Processing file: ./databases\wc3_S3_1v1_random.csv
+No duplicate rows found.
+No discontinuous ranks found.
+Press a key for the next file...
+--------------------------------
+Processing file: ./databases\wc3_S3_2v2arranged_N-A.csv
+No duplicate rows found.
+No discontinuous ranks found.
+Press a key for the next file...
+--------------------------------
+Processing file: ./databases\wc3_S3_2v2_all.csv
+Duplicate rows found in the following rows:
+ rank  mmr searchRace   race    toonname        battleTag avatarId  division  wins  losses  draws
+ 5350 4939        all random ['PioSiti'] ['PioSiti#2792'] ['p002']         3   144     145      0
+ 5351 4939        all random ['PioSiti'] ['PioSiti#2792'] ['p002']         3   144     145      0
+ 6500 4850        all undead  ['LEOMAR'] ['LEOMAR#11818']     ['']         3     7      10      0
+ 6501 4850        all undead  ['LEOMAR'] ['LEOMAR#11818']     ['']         3     7      10      0
+No discontinuous ranks found.
+Press a key for the next file...
+--------------------------------
+Processing file: ./databases\wc3_S3_2v2_random.csv
+No duplicate rows found.
+No discontinuous ranks found.
+Press a key for the next file...
+--------------------------------
+Processing file: ./databases\wc3_S3_3v3arranged_N-A.csv
+No duplicate rows found.
+No discontinuous ranks found.
+Press a key for the next file...
+--------------------------------
+Processing file: ./databases\wc3_S3_3v3_all.csv
+Duplicate rows found in the following rows:
+ rank  mmr searchRace      race   toonname       battleTag avatarId  division  wins  losses  draws
+ 8200 4102        all    undead   ['Abel']  ['Abel#11376']     ['']         3    98     182      0
+ 8201 4102        all    undead   ['Abel']  ['Abel#11376']     ['']         3    98     182      0
+ 8700 3866        all night_elf ['Merlin'] ['Merlin#1769']     ['']         2    10      29      0
+ 8701 3866        all night_elf ['Merlin'] ['Merlin#1769']     ['']         2    10      29      0
+Discontinuous ranks found. Missing ranks:
+[651, 652, 653, 654, 655, 656, 657, 658, 659, 660, 661, 662, 663, 664, 665, 666, 667, 668, 669, 670, 671, 672, 673, 674, 675, 3751, 3752, 3753, 3754, 3755, 3756, 3757, 3758, 3759, 3760, 3761, 3762, 3763, 3764, 3765, 3766, 3767, 3768, 3769, 3770, 3771, 3772, 3773, 3774, 
+3775]
+Press a key for the next file...
+--------------------------------
+Processing file: ./databases\wc3_S3_3v3_random.csv
+No duplicate rows found.
+No discontinuous ranks found.
+Press a key for the next file...
+No discontinuous ranks found.
+Press a key for the next file...
+--------------------------------
+Processing file: ./databases\wc3_S3_4v4_all.csv
+Duplicate rows found in the following rows:
+ rank  mmr searchRace      race         toonname             battleTag avatarId  division  wins  losses  draws
+ 6500 4849        all       orc ['TIMwakefield'] ['TIMwakefield#3652']     ['']         3    56      23      0
+ 6501 4849        all       orc ['TIMwakefield'] ['TIMwakefield#3652']     ['']         3    56      23      0
+ 7000 4823        all     human      ['godmork']      ['godmork#1768']     ['']         3     4       5      0
+ 7001 4823        all     human      ['godmork']      ['godmork#1768']     ['']         3     4       5      0
+ 7975 4774        all    random      ['TeamWC3']      ['TeamWC3#1727']     ['']         3    30      23      0
+ 7976 4774        all    random      ['TeamWC3']      ['TeamWC3#1727']     ['']         3    30      23      0
+13950 4501        all     human     ['FLASHMAN']    ['FLASHMAN#31899']     ['']         3    48      34      0
+13951 4501        all     human     ['FLASHMAN']    ['FLASHMAN#31899']     ['']         3    48      34      0
+14075 4496        all       orc   ['BlueFalcon']  ['BlueFalcon#11602'] ['p074']         3     5       8      0
+14076 4496        all       orc   ['BlueFalcon']  ['BlueFalcon#11602'] ['p074']         3     5       8      0
+15500 4430        all    random        ['khaos']       ['khaos#12967']     ['']         3   340     276      0
+15501 4430        all    random        ['khaos']       ['khaos#12967']     ['']         3   340     276      0
+16575 4379        all night_elf     ['Potatoes']     ['Potatoes#1963']     ['']         3    29      36      0
+16576 4379        all night_elf     ['Potatoes']     ['Potatoes#1963']     ['']         3    29      36      0
+17225 4348        all     human     ['maybayno']     ['maybayno#2181'] ['p055']         3    80      63      0
+17226 4348        all     human     ['maybayno']     ['maybayno#2181'] ['p055']         3    80      63      0
+21425 4103        all     human         ['아기까꿍']         ['아기까꿍#3203']     ['']         3     0       9      0
+21426 4103        all     human         ['아기까꿍']         ['아기까꿍#3203']     ['']         3     0       9      0
+27500 3493        all    undead        ['Jibby']        ['Jibby#2882'] ['p045']         2    18      59      0
+27501 3493        all    undead        ['Jibby']        ['Jibby#2882'] ['p045']         2    18      59      0
+28200 3342        all    undead  ['Daniyarcheg'] ['Daniyarcheg#21215'] ['p043']         2   178     302      0
+28201 3342        all    undead  ['Daniyarcheg'] ['Daniyarcheg#21215'] ['p043']         2   178     302      0
+Discontinuous ranks found. Missing ranks:
+[14336, 14337, 14338, 14339, 14340, 14341, 14342, 14343, 14344, 14345, 14346, 14347, 14348, 14349, 14350, 21126, 21127, 21128, 21129, 21130, 21131, 21132, 21133, 21134, 21135, 21136, 21137, 21138, 21139, 21140, 21141, 21142, 21143, 21144, 21145, 21146, 21147, 21148, 21149, 21150, 13476, 1701, 1702, 1703, 1704, 1705, 1706, 1707, 13484, 13485, 13486, 13487, 13488, 13489, 13490, 1708, 1709, 1710, 1711, 1712, 1713, 1714, 1715, 1716, 1717, 1718, 1719, 1720, 1721, 1722, 1723, 1724, 1725, 13500, 13477, 13478, 13479, 13480, 
+13481, 13482, 13483, 13491, 13492, 13493, 13494, 13495, 13496, 13497, 13498, 13499, 14326, 14327, 14328, 14329, 14330, 14331, 14332, 14333, 14334, 14335]Press a key for the next file...
+--------------------------------
+Processing file: ./databases\wc3_S3_4v4_random.csv
+No duplicate rows found.
+No discontinuous ranks found.
+Press a key for the next file...
+--------------------------------
+Processing file: ./databases\wc3_S3_sffa_all.csv
+No duplicate rows found.
+No discontinuous ranks found.
+Press a key for the next file...
+--------------------------------
+Processing file: ./databases\wc3_S3_sffa_random.csv
+No duplicate rows found.
+No discontinuous ranks found.
+Press a key for the next file...
+--------------------------------

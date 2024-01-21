@@ -1,0 +1,7 @@
+hex_payload = "a9746ab912b3b1f8166c963769b315c7"
+
+# Convert hexadecimal string to bytes
+bytes_payload = bytes.fromhex(hex_payload)
+
+# Output the bytes
+print(bytes_payload)
