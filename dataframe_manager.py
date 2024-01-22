@@ -3,6 +3,7 @@ import json
 import pandas as pd
 
 def process_leaderboard_data_and_save(json_data):
+    
     payload = json_data.get("payload", {})
     message = payload.get("message", {})
 
@@ -97,3 +98,36 @@ def process_leaderboard_data_and_save(json_data):
                     print(e)
 
     return dataframe
+
+def determine_movement(df_path, latest_json_path="./databases/jsons/latest.json"):
+    # Read DataFrame from the provided path
+    df = pd.read_csv(df_path)
+
+    # Extract actual ranks from the DataFrame
+    actual_ranks = set(df['rank'])
+
+    # Extract ranks from the latest JSON
+    with open(latest_json_path, 'r', encoding='utf-8') as json_file:
+        latest_json = json.load(json_file)
+    latest_ranks = set(entry['rank'] for entry in latest_json['payload']['message']['rows'])
+
+    # Find the missing ranks between the last two sets in your DataFrame
+    missing_ranks = set(range(1, max(actual_ranks))) - actual_ranks
+
+    # Check if you should go left or right
+    print("Missing ranks range from:", min(missing_ranks), "to", max(missing_ranks))
+    go_left = min(missing_ranks) < min(latest_ranks)
+    go_right = min(missing_ranks) > min(latest_ranks)
+
+    print("Min latest:",  min(latest_ranks))
+    print("Max latest:",  max(latest_ranks))
+
+    # Determine the action based on the conditions
+    if go_left:
+        action = "previous"
+    elif go_right:
+        action = "next"
+    else:
+        action = "refresh"  # No movement needed
+
+    return action

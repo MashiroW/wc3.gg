@@ -7,8 +7,8 @@ import subprocess
 import os
 import signal
 from pathlib import Path
-
-from old_files.dataframe_saver import process_leaderboard_data
+from debug_tools import *
+from dataframe_manager import *
 
 def collect_image_paths(root_folder):
     image_paths = {}
@@ -30,7 +30,7 @@ def check_element_in_warcraft_window(element_image_path, confidence_threshold=0.
     warcraft_window = gw.getWindowsWithTitle("Warcraft III")
     
     if not warcraft_window:
-        print("Warcraft III window not found.")
+        #print("Warcraft III window not found.")
         return
     
     warcraft_window = warcraft_window[0]
@@ -324,26 +324,48 @@ def sequence_player(sequence): # Plays a sequence of images to click in an array
         else:
             idx += 1
 
-def press_next_till_end(sleeping_time=0):
-    timeout_seconds = 5
+def click_arrow(arrow_name, timeout_seconds=5, sleeping_time=0): # "next" or "previous"
+    
+    click_element_in_warcraft_window(element_image_path=ressources_paths[arrow_name], confidence_threshold=0.8, sleeping_time=sleeping_time)
+
+    start_time = time.time()
+    while time.time() - start_time < timeout_seconds and check_element_in_warcraft_window(element_image_path=ressources_paths["not_ready_for_click_checker"], confidence_threshold=0.8) == False:
+        pass
+    
+    while check_element_in_warcraft_window(element_image_path=ressources_paths["not_ready_for_click_checker"], confidence_threshold=0.8) == True:
+        pass
+
+def press_next_till_end(race, gamemode):
+
+    save_path = "./databases/wc3_S{0}_{1}_{2}.csv".format(3, gamemode, race)
 
     while check_element_in_warcraft_window(element_image_path=ressources_paths["right_end"], confidence_threshold=0.99) != True:
-        click_element_in_warcraft_window(element_image_path=ressources_paths["next"], confidence_threshold=0.8, sleeping_time=sleeping_time)
 
-        start_time = time.time()
-        while time.time() - start_time < timeout_seconds and check_element_in_warcraft_window(element_image_path=ressources_paths["not_ready_for_click_checker"], confidence_threshold=0.8) == False:
-            pass
-        
-        while check_element_in_warcraft_window(element_image_path=ressources_paths["not_ready_for_click_checker"], confidence_threshold=0.8) == True:
-            pass
+        click_arrow("next")
+
+        limit = 5
+        while check_duplicate_rows(save_path) == True:
+            click_arrow("previous")
+
+            limit -= 1
+            if limit == 0:
+                break
+
+        while check_discontinuous_ranks(save_path) == True:
+            movement = determine_movement(df_path=save_path)
+            #print("Decision is {0}".format(movement))
+            click_arrow(movement)
+
+
 
 def leaderboard_parser():
 
+    print("Clicker log 1")
     startup_sequence()
 
     for season in ["previous"]:
         for gamemode in ["1v1", "2v2", "3v3", "4v4", "cps"]: # Possibilities: ["1v1", "2v2", "3v3", "4v4", "cps"]
-            for race in ["all", "random"]: # Possibilities: ["all", "random", "human", "nightelf", "orc", "undead"]
+            for race in ["all"]: # Possibilities: ["all", "random", "human", "nightelf", "orc", "undead"]
 
                 print("Settings - Season: {0} - Race {1} - Gamemode {2}".format(season, race, gamemode))
 
@@ -352,7 +374,7 @@ def leaderboard_parser():
                 set_race(TargetRace=race, sleeping_time=0.5)
 
                 # Go through every page
-                press_next_till_end()
+                press_next_till_end(race=race, gamemode=gamemode)
 
                 # Reboot for fluidity
                 startup_sequence()

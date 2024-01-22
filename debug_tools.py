@@ -38,24 +38,23 @@ def check_discontinuous_ranks(data):
     else:
         print("Discontinuous ranks found. Missing ranks:")
         print(missing_ranks)
+        #print(len(missing_ranks)/25, " x25")
         return True
     
     return False
 
-folder_path = "./databases"
 
-for filename in os.listdir(folder_path):
-    file_path = os.path.join(folder_path, filename)
-    
-    if os.path.isfile(file_path):
-        # Your code to process each file goes here
-        print(f"Processing file: {file_path}")
-        check_duplicate_rows(data=file_path)
-        check_discontinuous_ranks(data=file_path)
-        input("Press a key for the next file...")
-        print("--------------------------------")
+if __name__ == "__main__":
 
-exit()
+    folder_path = "./databases"
 
-check_duplicate_rows(data="./databases/wc3_S3_1v1_all.csv")
-check_discontinuous_ranks(data="./databases/wc3_S3_1v1_all.csv")
+    for filename in os.listdir(folder_path):
+        file_path = os.path.join(folder_path, filename)
+        
+        if os.path.isfile(file_path):
+            # Your code to process each file goes here
+            print(f"Processing file: {file_path}")
+            check_duplicate_rows(data=file_path)
+            check_discontinuous_ranks(data=file_path)
+            input("Press a key for the next file...")
+            print("--------------------------------")

@@ -22,9 +22,9 @@ def process_packet(hex_packet):
         decoded_packet = bytes.fromhex(hex_packet.hex()).decode('utf-8', errors='replace')
         specific_json = extract_specific_json(decoded_packet)
         if specific_json:
-            print(specific_json)
+            #print(specific_json)
             process_leaderboard_data_and_save(json_data=specific_json)
-            print("---------------------------")
+            print("--------DATA INSERTED----------")
         else:
             #print("No valid JSON with 'messageType':'UpdateLeaderboardData' found in the packet.")
             pass
@@ -34,6 +34,8 @@ def process_packet(hex_packet):
 
 
 if __name__ == "__main__":
+    print("Sniffer starting")
+
     # Use loopback address directly
     selected_interface = '127.0.0.1'
 
