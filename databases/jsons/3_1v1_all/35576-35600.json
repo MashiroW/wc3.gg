@@ -1,0 +1,494 @@
+{
+  "messageType": "UpdateLeaderboardData",
+  "payload": {
+    "message": {
+      "region": "",
+      "gameMode": "1v1",
+      "race": "all",
+      "seasonId": 3,
+      "totalrows": 42950,
+      "totalpages": 1718,
+      "currentpage": 1424,
+      "hasError": false,
+      "errorMessage": "",
+      "rows": [
+        {
+          "race": "random",
+          "players": [
+            {
+              "toonName": "Barakaccc",
+              "battleTag": "Barakaccc#2845",
+              "avatarId": "p004",
+              "accountCreationTime": 182991338
+            }
+          ],
+          "region": "",
+          "mmr": 3969,
+          "gameMode": "",
+          "rank": 35576,
+          "wins": 2,
+          "losses": 10,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "human",
+          "players": [
+            {
+              "toonName": "Ritsma",
+              "battleTag": "Ritsma#1864",
+              "avatarId": "",
+              "accountCreationTime": 18446744073225768222
+            }
+          ],
+          "region": "",
+          "mmr": 3969,
+          "gameMode": "",
+          "rank": 35577,
+          "wins": 8,
+          "losses": 25,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "night_elf",
+          "players": [
+            {
+              "toonName": "GLTCHTRP",
+              "battleTag": "GLTCHTRP#2770",
+              "avatarId": "p099",
+              "accountCreationTime": 95882579
+            }
+          ],
+          "region": "",
+          "mmr": 3969,
+          "gameMode": "",
+          "rank": 35578,
+          "wins": 8,
+          "losses": 19,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "night_elf",
+          "players": [
+            {
+              "toonName": "蒼白的金色科多獸",
+              "battleTag": "蒼白的金色科多獸#2788",
+              "avatarId": "",
+              "accountCreationTime": 18446744072216781658
+            }
+          ],
+          "region": "",
+          "mmr": 3969,
+          "gameMode": "",
+          "rank": 35579,
+          "wins": 526,
+          "losses": 462,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "human",
+          "players": [
+            {
+              "toonName": "unwise",
+              "battleTag": "unwise#2625",
+              "avatarId": "p002",
+              "accountCreationTime": 18446744071807644008
+            }
+          ],
+          "region": "",
+          "mmr": 3969,
+          "gameMode": "",
+          "rank": 35580,
+          "wins": 43,
+          "losses": 25,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "human",
+          "players": [
+            {
+              "toonName": "bkwar3007",
+              "battleTag": "bkwar3007#2277",
+              "avatarId": "p028",
+              "accountCreationTime": 18446744073597830714
+            }
+          ],
+          "region": "",
+          "mmr": 3969,
+          "gameMode": "",
+          "rank": 35581,
+          "wins": 0,
+          "losses": 7,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "night_elf",
+          "players": [
+            {
+              "toonName": "Silvas",
+              "battleTag": "Silvas#11642",
+              "avatarId": "",
+              "accountCreationTime": 287436856
+            }
+          ],
+          "region": "",
+          "mmr": 3969,
+          "gameMode": "",
+          "rank": 35582,
+          "wins": 2,
+          "losses": 9,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "human",
+          "players": [
+            {
+              "toonName": "burmester",
+              "battleTag": "burmester#11555",
+              "avatarId": "",
+              "accountCreationTime": 1211013317
+            }
+          ],
+          "region": "",
+          "mmr": 3969,
+          "gameMode": "",
+          "rank": 35583,
+          "wins": 212,
+          "losses": 195,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "human",
+          "players": [
+            {
+              "toonName": "Ragdar",
+              "battleTag": "Ragdar#2838",
+              "avatarId": "p028",
+              "accountCreationTime": 18446744072591872925
+            }
+          ],
+          "region": "",
+          "mmr": 3969,
+          "gameMode": "",
+          "rank": 35584,
+          "wins": 10,
+          "losses": 18,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "orc",
+          "players": [
+            {
+              "toonName": "Deggy",
+              "battleTag": "Deggy#2597",
+              "avatarId": "p036",
+              "accountCreationTime": 18446744071840144916
+            }
+          ],
+          "region": "",
+          "mmr": 3969,
+          "gameMode": "",
+          "rank": 35585,
+          "wins": 16,
+          "losses": 36,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "random",
+          "players": [
+            {
+              "toonName": "Harvey",
+              "battleTag": "Harvey#23200",
+              "avatarId": "p046",
+              "accountCreationTime": 18446744073650706846
+            }
+          ],
+          "region": "",
+          "mmr": 3968,
+          "gameMode": "",
+          "rank": 35586,
+          "wins": 11,
+          "losses": 15,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "night_elf",
+          "players": [
+            {
+              "toonName": "rhemekwawa",
+              "battleTag": "rhemekwawa#2332",
+              "avatarId": "",
+              "accountCreationTime": 18446744071861238487
+            }
+          ],
+          "region": "",
+          "mmr": 3968,
+          "gameMode": "",
+          "rank": 35587,
+          "wins": 0,
+          "losses": 5,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "human",
+          "players": [
+            {
+              "toonName": "Bandera450",
+              "battleTag": "Bandera450#2865",
+              "avatarId": "",
+              "accountCreationTime": 18446744072195852058
+            }
+          ],
+          "region": "",
+          "mmr": 3968,
+          "gameMode": "",
+          "rank": 35588,
+          "wins": 0,
+          "losses": 6,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "undead",
+          "players": [
+            {
+              "toonName": "houmeishi",
+              "battleTag": "houmeishi#3914",
+              "avatarId": "p001",
+              "accountCreationTime": 2061152082
+            }
+          ],
+          "region": "",
+          "mmr": 3968,
+          "gameMode": "",
+          "rank": 35589,
+          "wins": 42,
+          "losses": 66,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "random",
+          "players": [
+            {
+              "toonName": "UDUDUD",
+              "battleTag": "UDUDUD#31278",
+              "avatarId": "",
+              "accountCreationTime": 455080053
+            }
+          ],
+          "region": "",
+          "mmr": 3968,
+          "gameMode": "",
+          "rank": 35590,
+          "wins": 67,
+          "losses": 88,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "undead",
+          "players": [
+            {
+              "toonName": "Баклажан",
+              "battleTag": "Баклажан#236813",
+              "avatarId": "p004",
+              "accountCreationTime": 18446744072672149653
+            }
+          ],
+          "region": "",
+          "mmr": 3968,
+          "gameMode": "",
+          "rank": 35591,
+          "wins": 3,
+          "losses": 16,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "undead",
+          "players": [
+            {
+              "toonName": "FlameGnoll",
+              "battleTag": "FlameGnoll#13684",
+              "avatarId": "",
+              "accountCreationTime": 18446744072145566976
+            }
+          ],
+          "region": "",
+          "mmr": 3968,
+          "gameMode": "",
+          "rank": 35592,
+          "wins": 2,
+          "losses": 10,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "orc",
+          "players": [
+            {
+              "toonName": "SunshineBoy",
+              "battleTag": "SunshineBoy#11659",
+              "avatarId": "",
+              "accountCreationTime": 18446744072629986722
+            }
+          ],
+          "region": "",
+          "mmr": 3968,
+          "gameMode": "",
+          "rank": 35593,
+          "wins": 440,
+          "losses": 424,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "human",
+          "players": [
+            {
+              "toonName": "Garik66",
+              "battleTag": "Garik66#21145",
+              "avatarId": "p040",
+              "accountCreationTime": 18446744072341762147
+            }
+          ],
+          "region": "",
+          "mmr": 3968,
+          "gameMode": "",
+          "rank": 35594,
+          "wins": 11,
+          "losses": 22,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "human",
+          "players": [
+            {
+              "toonName": "VasilVasilev",
+              "battleTag": "VasilVasilev#21568",
+              "avatarId": "p081",
+              "accountCreationTime": 242768286
+            }
+          ],
+          "region": "",
+          "mmr": 3968,
+          "gameMode": "",
+          "rank": 35595,
+          "wins": 23,
+          "losses": 27,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "night_elf",
+          "players": [
+            {
+              "toonName": "Richie",
+              "battleTag": "Richie#11170",
+              "avatarId": "p068",
+              "accountCreationTime": 891911687
+            }
+          ],
+          "region": "",
+          "mmr": 3968,
+          "gameMode": "",
+          "rank": 35596,
+          "wins": 1,
+          "losses": 9,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "human",
+          "players": [
+            {
+              "toonName": "Zet",
+              "battleTag": "Zet#22811",
+              "avatarId": "p068",
+              "accountCreationTime": 18446744073216593089
+            }
+          ],
+          "region": "",
+          "mmr": 3968,
+          "gameMode": "",
+          "rank": 35597,
+          "wins": 49,
+          "losses": 53,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "undead",
+          "players": [
+            {
+              "toonName": "Reqwy",
+              "battleTag": "Reqwy#2715",
+              "avatarId": "p025",
+              "accountCreationTime": 1685680802
+            }
+          ],
+          "region": "",
+          "mmr": 3968,
+          "gameMode": "",
+          "rank": 35598,
+          "wins": 17,
+          "losses": 23,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "human",
+          "players": [
+            {
+              "toonName": "呂阿龍",
+              "battleTag": "呂阿龍#3697",
+              "avatarId": "",
+              "accountCreationTime": 18446744072120664726
+            }
+          ],
+          "region": "",
+          "mmr": 3968,
+          "gameMode": "",
+          "rank": 35599,
+          "wins": 138,
+          "losses": 147,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "orc",
+          "players": [
+            {
+              "toonName": "Beatle",
+              "battleTag": "Beatle#2840",
+              "avatarId": "p008",
+              "accountCreationTime": 18446744072203093157
+            }
+          ],
+          "region": "",
+          "mmr": 3968,
+          "gameMode": "",
+          "rank": 35600,
+          "wins": 12,
+          "losses": 16,
+          "draws": 0,
+          "division": 2
+        }
+      ],
+      "lastAccessTime": 1705961193
+    }
+  }
+}

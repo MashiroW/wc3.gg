@@ -1,0 +1,38 @@
+{
+  "messageType": "UpdateLeaderboardData",
+  "payload": {
+    "message": {
+      "region": "",
+      "gameMode": "1v1",
+      "race": "all",
+      "seasonId": 3,
+      "totalrows": 42951,
+      "totalpages": 1719,
+      "currentpage": 1719,
+      "hasError": false,
+      "errorMessage": "",
+      "rows": [
+        {
+          "race": "human",
+          "players": [
+            {
+              "toonName": "Pulica",
+              "battleTag": "Pulica#1293",
+              "avatarId": "",
+              "accountCreationTime": 828826278
+            }
+          ],
+          "region": "",
+          "mmr": 2343,
+          "gameMode": "",
+          "rank": 42951,
+          "wins": 41,
+          "losses": 195,
+          "draws": 0,
+          "division": 1
+        }
+      ],
+      "lastAccessTime": 1705961579
+    }
+  }
+}

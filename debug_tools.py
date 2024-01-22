@@ -36,8 +36,8 @@ def check_discontinuous_ranks(data):
     if not missing_ranks:
         print("No discontinuous ranks found.")
     else:
-        print("Discontinuous ranks found. Missing ranks:")
-        print(missing_ranks)
+        print("Discontinuous ranks found.")
+        print("Missing ranks range from:", min(missing_ranks), "to", max(missing_ranks))
         #print(len(missing_ranks)/25, " x25")
         return True
     

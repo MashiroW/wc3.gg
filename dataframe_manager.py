@@ -2,6 +2,35 @@ import os
 import json
 import pandas as pd
 
+def save_to_json(json_data):
+    payload = json_data.get("payload", {})
+    message = payload.get("message", {})
+
+    mssageType = json_data.get("messageType", "")
+
+    if mssageType != "UpdateLeaderboardData":
+        raise ValueError("Invalid JSON data. MessageType isn't UpdateLeaderboardData")
+    
+    seasonId = message.get("seasonId", "")
+    gameMode = message.get("gameMode", "")
+    race = message.get("race", "NaN")
+    
+    leaderboard_data = message["rows"]
+    min_rank = min(entry.get("rank", 0) for entry in leaderboard_data)
+    max_rank = max(entry.get("rank", 0) for entry in leaderboard_data)
+
+    # Create the JSON folder if it doesn't exist
+    json_folder = "./databases/jsons/{0}_{1}_{2}/".format(seasonId, gameMode, race)
+    os.makedirs(json_folder, exist_ok=True)
+
+    # Save the JSON data in the folder
+    json_save_path = os.path.join(json_folder, "{0}-{1}.json".format(min_rank, max_rank))
+    
+    with open(json_save_path, 'wb') as json_file:
+        json_file.write(json.dumps(json_data, ensure_ascii=False, indent=2).encode('utf-8'))
+
+
+
 def process_leaderboard_data_and_save(json_data):
     
     payload = json_data.get("payload", {})
@@ -16,14 +45,24 @@ def process_leaderboard_data_and_save(json_data):
     #print(json_data)
 
     # Check if the required keys are present
+    """
     if "race" not in message or "rows" not in message:
         raise ValueError("Invalid JSON data. Missing 'race' or 'rows' key.")
+    """
+    
+    # Save the JSON data in the "./databases/jsons" folder
+    json_folder = "./databases/jsons"
+    json_save_path = os.path.join(json_folder, "latest.json")
+    with open(json_save_path, 'wb') as json_file:
+        json_file.write(json.dumps(json_data, ensure_ascii=False, indent=2).encode('utf-8'))
     
     searchRace = message["race"]
     season = message["seasonId"]
     gamemode = message["gameMode"]
 
     leaderboard_data = message["rows"]
+
+    print("In packet - Min :", min(entry.get("rank", 0) for entry in leaderboard_data), "- Max :", max(entry.get("rank", 0) for entry in leaderboard_data))
 
     dataframe_data = []
     for entry in leaderboard_data:
@@ -48,12 +87,6 @@ def process_leaderboard_data_and_save(json_data):
         dataframe_data.append(row_data)
 
     dataframe = pd.DataFrame(dataframe_data)
-
-    # Save the JSON data in the "./databases/jsons" folder
-    json_folder = "./databases/jsons"
-    json_save_path = os.path.join(json_folder, "latest.json")
-    with open(json_save_path, 'wb') as json_file:
-        json_file.write(json.dumps(json_data, ensure_ascii=False, indent=2).encode('utf-8'))
 
     # Save the DataFrame
     save_path = "./databases/wc3_S{0}_{1}_{2}.csv".format(season, gamemode, "N-A" if searchRace == "" else searchRace)
@@ -115,7 +148,6 @@ def determine_movement(df_path, latest_json_path="./databases/jsons/latest.json"
     missing_ranks = set(range(1, max(actual_ranks))) - actual_ranks
 
     # Check if you should go left or right
-    print("Missing ranks range from:", min(missing_ranks), "to", max(missing_ranks))
     go_left = min(missing_ranks) < min(latest_ranks)
     go_right = min(missing_ranks) > min(latest_ranks)
 

@@ -7,6 +7,7 @@ import subprocess
 import os
 import signal
 from pathlib import Path
+
 from debug_tools import *
 from dataframe_manager import *
 
@@ -298,6 +299,9 @@ def startup_sequence():
         print("Startup over")
 
     execute_game()
+
+    global packets_sniffer
+    packets_sniffer = subprocess.Popen("python ./packets_sniffer.py", shell=True)
     
     sequence = [ressources_paths["multiplayer"],
                 ressources_paths["ladderboard"]]
@@ -331,6 +335,9 @@ def click_arrow(arrow_name, timeout_seconds=5, sleeping_time=0): # "next" or "pr
     start_time = time.time()
     while time.time() - start_time < timeout_seconds and check_element_in_warcraft_window(element_image_path=ressources_paths["not_ready_for_click_checker"], confidence_threshold=0.8) == False:
         pass
+
+    if arrow_name == "previous":
+        sequence_player([ressources_paths["refresh"]])
     
     while check_element_in_warcraft_window(element_image_path=ressources_paths["not_ready_for_click_checker"], confidence_threshold=0.8) == True:
         pass
@@ -340,32 +347,38 @@ def press_next_till_end(race, gamemode):
     save_path = "./databases/wc3_S{0}_{1}_{2}.csv".format(3, gamemode, race)
 
     while check_element_in_warcraft_window(element_image_path=ressources_paths["right_end"], confidence_threshold=0.99) != True:
-
         click_arrow("next")
 
-        limit = 5
-        while check_duplicate_rows(save_path) == True:
-            click_arrow("previous")
+        """
+        try:
+            limit = 5
+            while check_duplicate_rows(save_path) == True:
+                click_arrow("previous")
 
-            limit -= 1
-            if limit == 0:
-                break
+                limit -= 1
+                if limit == 0:
+                    break
 
-        while check_discontinuous_ranks(save_path) == True:
-            movement = determine_movement(df_path=save_path)
-            #print("Decision is {0}".format(movement))
-            click_arrow(movement)
-
-
+            while check_discontinuous_ranks(save_path) == True:
+                movement = determine_movement(df_path=save_path)
+                #print("Decision is {0}".format(movement))
+                click_arrow(movement)
+        except Exception as e:
+            # In case where the csv file doesn't exist yet.
+            print("no file yet")
+            print(e)
+            pass
+        """
 
 def leaderboard_parser():
 
-    print("Clicker log 1")
+    global packets_sniffer
     startup_sequence()
 
+    
     for season in ["previous"]:
         for gamemode in ["1v1", "2v2", "3v3", "4v4", "cps"]: # Possibilities: ["1v1", "2v2", "3v3", "4v4", "cps"]
-            for race in ["all"]: # Possibilities: ["all", "random", "human", "nightelf", "orc", "undead"]
+            for race in ["all"]: # Possibilities: ["all", "random", "human", "night_elf", "orc", "undead"]
 
                 print("Settings - Season: {0} - Race {1} - Gamemode {2}".format(season, race, gamemode))
 
@@ -376,9 +389,13 @@ def leaderboard_parser():
                 # Go through every page
                 press_next_till_end(race=race, gamemode=gamemode)
 
+                # Kill process
+                packets_sniffer.terminate()
+
                 # Reboot for fluidity
                 startup_sequence()
 
+    """
     for season in ["previous"]:
         for gamemode in ["confrontation_2v2", "confrontation_3v3", "confrontation_4v4"]:
 
@@ -388,14 +405,17 @@ def leaderboard_parser():
             set_gamemode(TargetGamemode=gamemode, sleeping_time=0.5)
 
             # Go through every page
-            press_next_till_end()
+            press_next_till_end(race="NaN", gamemode=gamemode)
 
             # Reboot for fluidity
             startup_sequence()
-    
+    """
+
     click_element_in_warcraft_window(ressources_paths["back"], confidence_threshold=0.8, sleeping_time=1)
 
 if __name__ == "__main__":
+
+    global packets_sniffer
 
     ressources_paths = collect_image_paths("./ressources/")
     leaderboard_parser()
