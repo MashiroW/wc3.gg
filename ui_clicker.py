@@ -11,7 +11,7 @@ from pathlib import Path
 from debug_tools import *
 from dataframe_manager import *
 
-def collect_image_paths(root_folder):
+def collect_image_paths(root_folder="./ressources/"):
     image_paths = {}
 
     root_path = Path(root_folder)
@@ -31,7 +31,7 @@ def check_element_in_warcraft_window(element_image_path, confidence_threshold=0.
     warcraft_window = gw.getWindowsWithTitle("Warcraft III")
     
     if not warcraft_window:
-        #print("Warcraft III window not found.")
+        print("Warcraft III window not found.")
         return
     
     warcraft_window = warcraft_window[0]
@@ -291,6 +291,10 @@ def startup_sequence():
         while get_pid(process_name=process_name) == None:
             pass
         
+        print("Resizing...")
+        while resize_window(window_title="Warcraft III", width=1129, height=874) == False:
+            pass
+        
         print("Waiting for Main Menu...")
         while check_element_in_warcraft_window(ressources_paths["multiplayer"], confidence_threshold=0.8) != True:
             pass
@@ -298,7 +302,7 @@ def startup_sequence():
         time.sleep(2) 
         print("Startup over")
 
-    execute_game()
+    execute_game()  
 
     global packets_sniffer
     packets_sniffer = subprocess.Popen("python ./packets_sniffer.py", shell=True)
@@ -330,26 +334,28 @@ def sequence_player(sequence): # Plays a sequence of images to click in an array
 
 def click_arrow(arrow_name, timeout_seconds=5, sleeping_time=0): # "next" or "previous"
     
-    click_element_in_warcraft_window(element_image_path=ressources_paths[arrow_name], confidence_threshold=0.8, sleeping_time=sleeping_time)
+    click_element_in_warcraft_window(element_image_path=ressources_paths[arrow_name], confidence_threshold=0.99, sleeping_time=sleeping_time)
 
     start_time = time.time()
     while time.time() - start_time < timeout_seconds and check_element_in_warcraft_window(element_image_path=ressources_paths["not_ready_for_click_checker"], confidence_threshold=0.8) == False:
         pass
 
+    """
     if arrow_name == "previous":
         sequence_player([ressources_paths["refresh"]])
+    """
     
     while check_element_in_warcraft_window(element_image_path=ressources_paths["not_ready_for_click_checker"], confidence_threshold=0.8) == True:
         pass
 
 def press_next_till_end(race, gamemode):
 
-    save_path = "./databases/wc3_S{0}_{1}_{2}.csv".format(3, gamemode, race)
-
     while check_element_in_warcraft_window(element_image_path=ressources_paths["right_end"], confidence_threshold=0.99) != True:
         click_arrow("next")
 
         """
+        save_path = "./databases/wc3_S{0}_{1}_{2}.csv".format(3, gamemode, race)
+
         try:
             limit = 5
             while check_duplicate_rows(save_path) == True:
@@ -374,8 +380,8 @@ def leaderboard_parser():
 
     global packets_sniffer
     startup_sequence()
-
     
+
     for season in ["previous"]:
         for gamemode in ["1v1", "2v2", "3v3", "4v4", "cps"]: # Possibilities: ["1v1", "2v2", "3v3", "4v4", "cps"]
             for race in ["all"]: # Possibilities: ["all", "random", "human", "night_elf", "orc", "undead"]
@@ -392,12 +398,12 @@ def leaderboard_parser():
                 # Kill process
                 packets_sniffer.terminate()
 
-                # Reboot for fluidity
+                # Reboot game for fluidity (will restart the sniffer too)
                 startup_sequence()
 
-    """
+
     for season in ["previous"]:
-        for gamemode in ["confrontation_2v2", "confrontation_3v3", "confrontation_4v4"]:
+        for gamemode in ["confrontation_2v2", "confrontation_3v3", "confrontation_4v4"]: # "confrontation_2v2", "confrontation_3v3", "confrontation_4v4"
 
             print("Settings - Season: {0} - Race {1} - Gamemode {2}".format(season, "N/A", gamemode))
 
@@ -407,15 +413,45 @@ def leaderboard_parser():
             # Go through every page
             press_next_till_end(race="NaN", gamemode=gamemode)
 
-            # Reboot for fluidity
+            # Reboot game for fluidity (will restart the sniffer too)
             startup_sequence()
-    """
+
 
     click_element_in_warcraft_window(ressources_paths["back"], confidence_threshold=0.8, sleeping_time=1)
 
+def resize_window(window_title, width, height):
+    try:
+        # Get the window by title
+        window = gw.getWindowsWithTitle(window_title)
+
+        if not window:
+            #print(f"Window with title '{window_title}' not found.")
+            return False
+
+        window = window[0]
+
+        # Resize the window
+        window.resizeTo(width, height)
+        print(f"Resized window '{window_title}' to {width}x{height}")
+    except Exception as e:
+        print(f"Error resizing window: {e}")
+
+def get_window_resolution(process_name):
+    try:
+        window = gw.getWindowsWithTitle(process_name)[0]
+        width, height = window.size
+        return width, height
+    except IndexError:
+        print(f"Window with process name '{process_name}' not found.")
+        return None
+
 if __name__ == "__main__":
 
-    global packets_sniffer
 
-    ressources_paths = collect_image_paths("./ressources/")
+
+    global packets_sniffer
+    ressources_paths = collect_image_paths()
+
+    dump_jsons_folder(folder_path="./databases/jsons/")
     leaderboard_parser()
+    process_leaderboard_data_and_save()

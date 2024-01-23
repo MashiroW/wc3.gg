@@ -1,0 +1,38 @@
+{
+  "messageType": "UpdateLeaderboardData",
+  "payload": {
+    "message": {
+      "region": "",
+      "gameMode": "sffa",
+      "race": "human",
+      "seasonId": 3,
+      "totalrows": 1,
+      "totalpages": 1,
+      "currentpage": 1,
+      "hasError": false,
+      "errorMessage": "",
+      "rows": [
+        {
+          "race": "human",
+          "players": [
+            {
+              "toonName": "sadness",
+              "battleTag": "sadness#31451",
+              "avatarId": "p003",
+              "accountCreationTime": 18446744071674374155
+            }
+          ],
+          "region": "",
+          "mmr": 5115,
+          "gameMode": "",
+          "rank": 1,
+          "wins": 77,
+          "losses": 7,
+          "draws": 0,
+          "division": 4
+        }
+      ],
+      "lastAccessTime": 1705978262
+    }
+  }
+}
