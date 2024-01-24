@@ -8,7 +8,7 @@
 }
 
 body {
-    font-family: 'ThorndaleRegular', Arial, sans-serif;  /* Updated font-family */
+    font-family: 'ThorndaleRegular', Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-image: url('/static/myapp/img/nightelfbackground.jpg');
@@ -33,19 +33,20 @@ nav a {
     padding: 14px 16px;
     text-decoration: none;
     transition: 0.3s;
+    font-weight: bold; /* Set the font weight to bold */
 }
 
 .logo-container {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 40px; /* Adjust as needed */
-    max-width: 100px; /* Set the maximum width for the logo container */
-    max-height: 60px; /* Set the maximum height for the logo */
+    right: 40px;
+    max-width: 100px;
+    max-height: 60px;
 }
 
 .logo-container img {
-    max-width: 130%; /* Ensure the logo respects its aspect ratio */
+    max-width: 130%;
     height: auto;
     display: block;
 }
@@ -59,9 +60,14 @@ nav a:hover {
     text-align: center;
     margin-top: 100px;
     color: #fff;
-    min-height: 100vh; /* Set a minimum height to ensure it takes at least the viewport height */
+    min-height: 100vh;
 }
 
 h1 {
     color: #fff;
+}
+
+.centered-table {
+    margin: auto;
+    background-color: rgba(2, 0, 0, 0.8); /* Adjust the alpha value (last parameter) for transparency */
 }

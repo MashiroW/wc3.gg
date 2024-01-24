@@ -7,5 +7,6 @@ urlpatterns = [
     path('books/', book_list, name='book_list'),
     path('leaderboards/', leaderboards, name='leaderboards'),
     path('about/', about, name='about'),
-    path('contact/', contact, name='contact')
+    path('contact/', contact, name='contact'),
+    path('api/leaderboards/', get_filtered_leaderboard, name='get_filtered_leaderboard')
 ]

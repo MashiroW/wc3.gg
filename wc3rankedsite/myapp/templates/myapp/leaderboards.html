@@ -1,8 +1,139 @@
-<!-- templates/myapp/home.html -->
+<!-- templates/myapp/leaderboards.html -->
 {% extends 'myapp/base.html' %}
 
 {% block content %}
-    <h1>Welcome to the Leaderbards Page</h1>
+    <div id="filters-container">
+        <label for="season-filter">Season:</label>
+        <select id="season-filter">
+            {% for season in seasons %}
+                <option value="{{ season }}">{{ season }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="gamemode-filter">Gamemode:</label>
+        <select id="gamemode-filter">
+            {% for gamemode in gamemodes %}
+                <option value="{{ gamemode }}">{{ gamemode }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="race-filter">Race:</label>
+        <select id="race-filter">
+            {% for race in races %}
+                <option value="{{ race }}">{{ race }}</option>
+            {% endfor %}
+        </select>
+
+        <button id="apply-filters">Apply Filters</button>
+    </div>
+
+    <h1>Welcome to the Leaderboards Page</h1>
     <p>YEEET</p>
-    <!-- Add your page content here -->
+
+    <table id="leaderboard-table" class="centered-table">
+        <thead>
+            <tr>
+                <th>Player Battle Tags</th>
+                <th>Avatar ID</th>
+                <th>Rank</th>
+                <th>MMR</th>
+                <th>Race</th>
+                <th>Division</th>
+                <th>Wins</th>
+                <th>Losses</th>
+                <th>Draws</th>
+                <!-- Add more table headers as needed -->
+            </tr>
+        </thead>
+        <tbody>
+            <!-- The table rows will be dynamically populated using JavaScript -->
+        </tbody>
+    </table>
+
+    <div id="pagination-container">
+        <button id="prev-page">Previous</button>
+        <span id="page-info">Page 1</span>
+        <button id="next-page">Next</button>
+    </div>
+
+    <script>
+        var baseURL = "{% url 'get_filtered_leaderboard' %}";
+        var currentPage = 1;
+        var entriesPerPage = 10;
+
+        document.getElementById('apply-filters').addEventListener('click', function () {
+            currentPage = 1;  // Reset page number when filters are applied
+            updateTable();
+        });
+
+        document.getElementById('prev-page').addEventListener('click', function () {
+            if (currentPage > 1) {
+                currentPage--;
+                updateTable();
+            }
+        });
+
+        document.getElementById('next-page').addEventListener('click', function () {
+            currentPage++;
+            updateTable();
+        });
+
+        function updateTable() {
+            document.getElementById('page-info').textContent = 'Page ' + currentPage;
+
+            // Get selected filter values
+            var season = document.getElementById('season-filter').value;
+            var gamemode = document.getElementById('gamemode-filter').value;
+            var race = document.getElementById('race-filter').value;
+
+            // Fetch data using AJAX based on selected filters and pagination
+            var start = (currentPage - 1) * entriesPerPage;
+            var end = start + entriesPerPage;
+
+            fetch(`${baseURL}?season=${season}&gamemode=${gamemode}&race=${race}`)
+                .then(response => response.json())
+                .then(data => {
+                    var paginatedData = data.slice(start, end);
+
+                    // Update the table rows based on the fetched data
+                    var tbody = document.getElementById('leaderboard-table').getElementsByTagName('tbody')[0];
+                    tbody.innerHTML = '';
+                    paginatedData.forEach(entry => {
+                        var row = tbody.insertRow();
+
+                        // Populate table cells based on the entry properties
+                        var battleTagCell = row.insertCell();
+                        battleTagCell.textContent = entry.player_battle_tags;
+
+                        var avatarIdCell = row.insertCell();
+                        avatarIdCell.textContent = entry.avatarId;
+
+                        var rankCell = row.insertCell();
+                        rankCell.textContent = entry.rank;
+
+                        var mmrCell = row.insertCell();
+                        mmrCell.textContent = entry.mmr;
+
+                        var raceCell = row.insertCell();
+                        raceCell.textContent = entry.race;
+
+                        var divisionCell = row.insertCell();
+                        divisionCell.textContent = entry.division;
+
+                        var winsCell = row.insertCell();
+                        winsCell.textContent = entry.wins;
+
+                        var lossesCell = row.insertCell();
+                        lossesCell.textContent = entry.losses;
+
+                        var drawsCell = row.insertCell();
+                        drawsCell.textContent = entry.draws;
+
+                        // Add more cells as needed
+
+                    });
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+    </script>
 {% endblock %}
