@@ -4,13 +4,16 @@ import ast
 from django.core.management.base import BaseCommand
 from myapp.models import Entry, GameSetting, Player
 from datetime import datetime
+import argparse
 
 class Command(BaseCommand):
     help = 'Load players from CSV file'
 
+    def add_arguments(self, parser):
+        parser.add_argument('csv_file_path', type=str, help='Path to the CSV file')
+
     def handle(self, *args, **options):
-        csv_file_path = './wc3_S3_1v1_all.csv'
-        #csv_file_path = "wc3_S3_2v2arranged_N-A.csv"
+        csv_file_path = options['csv_file_path']
 
         # Extract season, gamemode, and race from the file name
         _, filename = os.path.split(csv_file_path)
@@ -20,6 +23,8 @@ class Command(BaseCommand):
 
         gamemode = parts[2]
         race = parts[3][:-4]
+        if race == "N-A":
+            race = "all"
 
         # Create a new GameSetting instance with the current datetime
         current_datetime = datetime.now()
@@ -70,3 +75,6 @@ class Command(BaseCommand):
                 )
                 
                 entry.players.set(players)
+
+# Example usage:
+# python manage.py your_command /path/to/your/csv_file.csv

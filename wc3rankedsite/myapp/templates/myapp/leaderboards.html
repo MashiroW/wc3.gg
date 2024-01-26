@@ -2,6 +2,9 @@
 {% extends 'myapp/base.html' %}
 
 {% block content %}
+    <h1>Welcome to the Leaderboards Page</h1>
+    <p>YEEET</p>
+
     <div id="filters-container">
         <label for="season-filter">Season:</label>
         <select id="season-filter">
@@ -27,28 +30,9 @@
         <button id="apply-filters">Apply Filters</button>
     </div>
 
-    <h1>Welcome to the Leaderboards Page</h1>
-    <p>YEEET</p>
-
-    <table id="leaderboard-table" class="centered-table">
-        <thead>
-            <tr>
-                <th>Player Battle Tags</th>
-                <th>Avatar ID</th>
-                <th>Rank</th>
-                <th>MMR</th>
-                <th>Race</th>
-                <th>Division</th>
-                <th>Wins</th>
-                <th>Losses</th>
-                <th>Draws</th>
-                <!-- Add more table headers as needed -->
-            </tr>
-        </thead>
-        <tbody>
-            <!-- The table rows will be dynamically populated using JavaScript -->
-        </tbody>
-    </table>
+    <div id="entry-container" class="centered-container">
+        <!-- The entry divs will be dynamically populated using JavaScript -->
+    </div>
 
     <div id="pagination-container">
         <button id="prev-page">Previous</button>
@@ -59,10 +43,11 @@
     <script>
         var baseURL = "{% url 'get_filtered_leaderboard' %}";
         var currentPage = 1;
-        var entriesPerPage = 10;
+        var entriesPerPage = 100;
 
         document.getElementById('apply-filters').addEventListener('click', function () {
             currentPage = 1;  // Reset page number when filters are applied
+            updateEntryContainer([]);
             updateTable();
         });
 
@@ -78,6 +63,11 @@
             updateTable();
         });
 
+        // Update table immediately when the page loads
+        document.addEventListener('DOMContentLoaded', function () {
+            updateTable();
+        });
+
         function updateTable() {
             document.getElementById('page-info').textContent = 'Page ' + currentPage;
 
@@ -86,54 +76,157 @@
             var gamemode = document.getElementById('gamemode-filter').value;
             var race = document.getElementById('race-filter').value;
 
-            // Fetch data using AJAX based on selected filters and pagination
+            // Calculate the range based on the current page
             var start = (currentPage - 1) * entriesPerPage;
             var end = start + entriesPerPage;
 
-            fetch(`${baseURL}?season=${season}&gamemode=${gamemode}&race=${race}`)
+            // Fetch data using AJAX based on selected filters and pagination range
+            fetch(`${baseURL}?season=${season}&gamemode=${gamemode}&race=${race}&range=${start}-${end}`)
                 .then(response => response.json())
                 .then(data => {
-                    var paginatedData = data.slice(start, end);
-
-                    // Update the table rows based on the fetched data
-                    var tbody = document.getElementById('leaderboard-table').getElementsByTagName('tbody')[0];
-                    tbody.innerHTML = '';
-                    paginatedData.forEach(entry => {
-                        var row = tbody.insertRow();
-
-                        // Populate table cells based on the entry properties
-                        var battleTagCell = row.insertCell();
-                        battleTagCell.textContent = entry.player_battle_tags;
-
-                        var avatarIdCell = row.insertCell();
-                        avatarIdCell.textContent = entry.avatarId;
-
-                        var rankCell = row.insertCell();
-                        rankCell.textContent = entry.rank;
-
-                        var mmrCell = row.insertCell();
-                        mmrCell.textContent = entry.mmr;
-
-                        var raceCell = row.insertCell();
-                        raceCell.textContent = entry.race;
-
-                        var divisionCell = row.insertCell();
-                        divisionCell.textContent = entry.division;
-
-                        var winsCell = row.insertCell();
-                        winsCell.textContent = entry.wins;
-
-                        var lossesCell = row.insertCell();
-                        lossesCell.textContent = entry.losses;
-
-                        var drawsCell = row.insertCell();
-                        drawsCell.textContent = entry.draws;
-
-                        // Add more cells as needed
-
-                    });
+                    updateEntryContainer(data);
                 })
                 .catch(error => console.error('Error fetching data:', error));
         }
+
+        function updateEntryContainer(data) {
+            var entryContainer = document.getElementById('entry-container');
+            entryContainer.innerHTML = '';
+
+            // Create div for column names
+            var columnNamesDiv = document.createElement('div');
+            columnNamesDiv.className = 'entry-card';
+            columnNamesDiv.innerHTML = `
+                <div class="column-name rank">Rank</div>
+                <div class="column-name division"></div>
+                <div class="column-name avatars"></div>
+                <div class="column-name battle-tags">BattleTags</div>
+                <div class="column-name mmr">MMR</div>
+                <div class="column-name race">Race</div>
+                <div class="column-name wins">Wins</div>
+                <div class="column-name losses">Losses</div>
+                <div class="column-name draws">Draws</div>
+            `;
+            entryContainer.appendChild(columnNamesDiv);
+
+            data.forEach(entry => {
+                var entryCard = document.createElement('div');
+                entryCard.className = 'entry-card';
+
+                /*
+                    // Populate the entry card content based on the entry properties
+                    var divisionDiv = document.createElement('div');
+                    divisionDiv.className = 'division';
+
+                        // Create an img element for the division
+                        var divisionImage = document.createElement('img');
+                        divisionImage.src = `/static/myapp/img/Ranked/simplified/rankedBadge_simplified_${entry.division}.png`;
+                        divisionImage.alt = `Rank ${entry.rank}`;
+                        divisionImage.className = 'rank-image';
+
+                        // Set a maximum width and height for the divisionImage
+                        divisionImage.style.maxWidth = '30px'; // Set your desired maximum width
+                        divisionImage.style.maxHeight = '30px'; // Set your desired maximum height
+
+                    // Append the img element to the rankDiv
+                    divisionDiv.appendChild(divisionImage);
+
+                entryCard.appendChild(divisionDiv);
+                */
+
+                // Populate the entry card content based on the entry properties
+                var rankDiv = document.createElement('div');
+                rankDiv.className = 'rank';
+                rankDiv.textContent = entry.rank;
+                entryCard.appendChild(rankDiv);
+
+                var divisionDiv = document.createElement('div');
+                divisionDiv.className = 'division'; // Add 'column-name' class here
+                divisionDiv.textContent = entry.division;
+        
+                    var divisionElement = document.createElement('img');
+                    divisionElement.src = `/static/myapp/img/Ranked/simplified/rankedBadge_simplified_${entry.division}.png`; // Set the src attribute
+                    divisionElement.className = 'avatars'; // Add a class for styling
+
+                    divisionElement.style.maxWidth = '30px'; // Set your desired maximum width
+                    divisionElement.style.maxHeight = '30px'; // Set your desired maximum height
+                
+                entryCard.appendChild(divisionElement);
+
+                var avatarIdDiv = document.createElement('div');
+                avatarIdDiv.className = 'avatars'; // Assuming you used 'avatars' for the class
+                var avatarIds = entry.avatarId.replace(/['\[\]]/g, '').split(', '); // Sanitize and split the string
+
+                avatarIds.forEach(avatarId => {
+                    var avatarElement = document.createElement('img'); // Use img for displaying avatars
+                    var imagePath;
+
+                    if (avatarId.trim() === "") {
+                        // Set a default image path if avatarId is an empty string
+                        imagePath = `/static/myapp/img/Portraits/p003.png`;
+                    } else {
+                        imagePath = `/static/myapp/img/Portraits/${avatarId}.png`;
+                    }
+
+                    avatarElement.src = imagePath; // Set the src attribute
+                    avatarElement.className = 'avatars'; // Add a class for styling
+
+                    // Set a maximum width and height for avatars
+                    avatarElement.style.maxWidth = '30px'; // Set your desired maximum width
+                    avatarElement.style.maxHeight = '30px'; // Set your desired maximum height
+                    avatarElement.onerror = function() {
+                        console.error(`Error loading image: ${imagePath}`);
+                    };
+
+                    // Create a new div for each avatar and append it separately
+                    var avatarWrapper = document.createElement('div');
+                    avatarWrapper.appendChild(avatarElement);
+                    avatarIdDiv.appendChild(avatarWrapper);
+                });
+
+                entryCard.appendChild(avatarIdDiv);
+
+                var battleTagDiv = document.createElement('div');
+                battleTagDiv.className = 'battle-tags'; // Add a class for styling
+                battleTagDiv.textContent = entry.player_battle_tags;
+                battleTagDiv.innerHTML = entry.player_battle_tags.replace(/, /g, '<br>'); // Replace comma with line break
+                entryCard.appendChild(battleTagDiv);
+
+                var mmrDiv = document.createElement('div');
+                mmrDiv.className = 'mmr';
+                mmrDiv.textContent = entry.mmr;
+                entryCard.appendChild(mmrDiv);
+
+                var raceDiv = document.createElement('div');
+                raceDiv.className = 'race';
+                raceDiv.textContent = formatRace(entry.race); // Use the formatRace function
+                entryCard.appendChild(raceDiv);
+
+                var winsDiv = document.createElement('div');
+                winsDiv.className = 'wins';
+                winsDiv.textContent = entry.wins;
+                entryCard.appendChild(winsDiv);
+
+                var lossesDiv = document.createElement('div');
+                lossesDiv.className = 'losses';
+                lossesDiv.textContent = entry.losses;
+                entryCard.appendChild(lossesDiv);
+
+                var drawsDiv = document.createElement('div');
+                drawsDiv.className = 'draws';
+                drawsDiv.textContent = entry.draws;
+                entryCard.appendChild(drawsDiv);
+
+                entryContainer.appendChild(entryCard);
+            });
+        }
+
+        function formatRace(race) {
+            // Capitalize the first letter of each word and replace underscores with spaces
+            return race.replace(/_/g, ' ').replace(/\w\S*/g, function (word) {
+                return word.charAt(0).toUpperCase() + word.substr(1).toLowerCase();
+            });
+        }
+
     </script>
 {% endblock %}

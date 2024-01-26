@@ -8,21 +8,25 @@
 }
 
 body {
-    font-family: 'ThorndaleRegular', Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url('/static/myapp/img/nightelfbackground.jpg');
+    background-image: linear-gradient(to bottom, rgba(61, 68, 161, 0.1) 80%, rgba(0, 161, 161, 0.4) 100%), url('/static/myapp/img/nightelfbackground.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     height: 100%;
+    background-attachment: fixed; /* Ensures the background stays fixed while scrolling */
 }
 
 nav {
-    position: relative;
     background-color: rgba(0, 0, 0, 0.7);
-    overflow: hidden;
-    transition: 0.3s;
+    padding: 0px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.3s;
 }
 
 nav a {
@@ -33,7 +37,7 @@ nav a {
     padding: 14px 16px;
     text-decoration: none;
     transition: 0.3s;
-    font-weight: bold; /* Set the font weight to bold */
+    font-weight: bold;
 }
 
 .logo-container {
@@ -46,7 +50,7 @@ nav a {
 }
 
 .logo-container img {
-    max-width: 130%;
+    max-width: 100%; /* Adjust the max-width to fit the container */
     height: auto;
     display: block;
 }
@@ -69,5 +73,91 @@ h1 {
 
 .centered-table {
     margin: auto;
-    background-color: rgba(2, 0, 0, 0.8); /* Adjust the alpha value (last parameter) for transparency */
+    background-color: rgba(2, 0, 0, 0.8);
+}
+
+#table-container {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+#leaderboard-table {
+    width: 100%;
+}
+
+#entry-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.entry-card {
+    background-color: rgba(0, 0, 0, 0.582);
+    border-radius: 2%;
+    padding: 10px;
+    margin: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.entry-card div {
+    flex: 1;
+    margin: 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.battle-tags {
+    text-align: left;
+}
+
+.entry-card .mmr,
+.entry-card .wins,
+.entry-card .losses,
+.entry-card .draws {
+    flex: 0 0 80px; /* Adjust the fixed width */
+}
+
+.entry-card .rank {
+    flex: 0 0 50px;
+}
+
+.entry-card .race {
+    flex: 0 0 100px;
+}
+
+.entry-card .avatars {
+    padding-top: 2px;
+    flex: 0 0 50px;
+}
+
+.entry-card .division {
+    flex: 0 0 50px;
+}
+
+.entry-card .battle-tags {
+    /*flex: 1;  Occupy remaining space */
+    flex: 0 0 50px;
+    min-width: 50px; /* Set a minimum width for better readability */
+}
+
+.entry-card .column-name {
+    font-weight: bold;
+    min-width: 50px;
+}
+
+.entry-card .column-name.battle-tags {
+    margin-left: 50px;
 }

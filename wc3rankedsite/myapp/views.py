@@ -37,30 +37,30 @@ def get_filtered_leaderboard(request):
     season = request.GET.get('season')
     gamemode = request.GET.get('gamemode')
     race = request.GET.get('race')
+    
+    # Extract the range from the URL, default to 0-100
+    range_param = request.GET.get('range', '0-100')
+    start, end = map(int, range_param.split('-'))
 
-    # Perform filtering based on the selected criteria
-    # Adjust this part based on your actual data structure
+    # Perform filtering based on the selected criteria and range
     filtered_entries = Entry.objects.filter(
         game_setting__season=season,
         game_setting__gamemode=gamemode,
         game_setting__race=race
-    )
+    )[start:end]
 
     # Serialize the filtered data
     serialized_data = [
         {
             'rank': entry.rank,
-            'mmr': entry.mmr,
-            'search_race': entry.searchRace,
-            'race': entry.race,
-            'avatarId': entry.avatarId,
             'division': entry.division,
+            'avatarId': entry.avatarId,
+            'player_battle_tags': entry.player_battle_tags,
+            'mmr': entry.mmr,
+            'race': entry.race,
             'wins': entry.wins,
             'losses': entry.losses,
             'draws': entry.draws,
-            'player_battle_tags': entry.player_battle_tags,
-            'season': entry.season,
-            'gamemode': entry.gamemode,
             # Add more fields as needed
         }
         for entry in filtered_entries
