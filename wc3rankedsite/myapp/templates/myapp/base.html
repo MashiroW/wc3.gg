@@ -7,6 +7,17 @@
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'myapp/css/style.css' %}">
 </head>
+<style>
+    .full-width-footer {
+        background-color: #333; /* Set the background color of the footer */
+        color: #fff; /* Set the text color of the footer */
+        text-align: center;
+        padding: 10px; /* Add padding to the footer content */
+        position: fixed; /* Fix the position at the bottom of the viewport */
+        width: 100%; /* Make the footer full-width */
+        bottom: 0; /* Position at the bottom */
+    }
+</style>
 <body>
 
 <nav>
@@ -24,6 +35,11 @@
 <!-- Your page content goes here -->
 <div class="content-container">
     {% block content %}{% endblock %}
+</div>
+
+<div class="bottom-text-container">
+    <!-- Your text content here -->
+    This is the bottom text.
 </div>
 
 </body>

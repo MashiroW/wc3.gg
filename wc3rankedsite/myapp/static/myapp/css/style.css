@@ -50,7 +50,7 @@ nav a {
 }
 
 .logo-container img {
-    max-width: 100%; /* Adjust the max-width to fit the container */
+    max-width: 100%;
     height: auto;
     display: block;
 }
@@ -67,97 +67,375 @@ nav a:hover {
     min-height: 100vh;
 }
 
-h1 {
+.leaderboard-header {
+    text-align: left;
+    padding-left: 20px; /* Adjust the left padding as needed */
+    background-color: #00000052;
+}
+
+.leaderboard-header h1 {
     color: #fff;
-}
-
-.centered-table {
-    margin: auto;
-    background-color: rgba(2, 0, 0, 0.8);
-}
-
-#table-container {
-    background-color: rgba(0, 0, 0, 0.3);
-    padding: 20px;
-    width: 100%;
-    box-sizing: border-box;
-    max-height: 500px;
-    overflow-y: auto;
-}
-
-#leaderboard-table {
-    width: 100%;
+    margin: 0; /* Remove margin from h1 */
 }
 
 #entry-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    padding-left: 20%;
-    padding-right: 20%;
+    padding-left: 14%;
+    padding-right: 14%;
+}
+
+.bottom-text-container {
+    background-color: #333; /* Set the background color of the container */
+    color: #fff; /* Set the text color */
+    text-align: center;
+    padding: 10px; /* Add padding to the content */
+    margin-top: 50px;
+    opacity: 50%;
 }
 
 .entry-card {
+    display: flex;
+    flex-wrap: wrap;
     background-color: rgba(0, 0, 0, 0.582);
     border-radius: 2%;
-    padding: 10px;
+    padding: 0px;
     margin: 5px;
     width: 100%;
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
 }
 
 .entry-card div {
-    flex: 1;
     margin: 0px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-.battle-tags {
-    text-align: left;
-}
-
-.entry-card .mmr,
 .entry-card .wins,
 .entry-card .losses,
 .entry-card .draws {
-    flex: 0 0 80px; /* Adjust the fixed width */
+    flex: 0 0 5%;
+}
+
+.entry-card .avatars-battle-tags {
+    flex: 0 0 30%;
+}
+
+.entry-card .mmr {
+    flex: 0 0 5%;
+    color: rgb(136, 255, 0);
+    margin-right: 1%;
+    min-width: 8%;
 }
 
 .entry-card .rank {
-    flex: 0 0 50px;
+    font-weight: bold;
+    margin-left: 3%;
+    min-width: 3%;
 }
 
 .entry-card .race {
-    flex: 0 0 100px;
-}
-
-.entry-card .avatars {
-    padding-top: 2px;
-    flex: 0 0 50px;
+    flex: 0 0 10%;
 }
 
 .entry-card .division {
-    flex: 0 0 50px;
+    flex: 0 0 1%;
 }
 
 .entry-card .battle-tags {
-    /*flex: 1;  Occupy remaining space */
-    flex: 0 0 50px;
-    min-width: 50px; /* Set a minimum width for better readability */
+    flex: 1;
 }
 
-.entry-card .column-name {
+.avatar-battle-tag-container {
+    display: flex;
+    align-items: center;
+    background-color: rgba(12, 91, 105, 0.144);
+    text-align: left;
+    flex: 0 50% 100%;
+}
+
+/*
+.entry-card.race.human:hover,
+.entry-card.race.orc:hover,
+.entry-card.race.undead:hover,
+.entry-card.race.night_elf:hover {
+    filter: brightness(200%); 
+    transition: filter 0.3s ease;
+}
+
+.avatar-battle-tag-container:hover .avatars {
+    filter: brightness(100%); 
+    transition: filter 0.3s ease;
+}
+*/
+
+.avatar-battle-tag-container {
+    text-decoration: none; /* Remove underlining */
+    color: #ffffff; /* Set the text color */
+    cursor: pointer; /* Change cursor on hover to indicate it's clickable */
+}
+
+.avatar-battle-tag-container:hover {
+    filter: brightness(150%); 
+    transition: filter 0.3s ease;
+    cursor: pointer;
+}
+
+.division-avatars {
+    max-width: 30px;
+    max-height: 30px;
+    
+}
+
+.avatars {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    margin-left: 0px;
+    padding: 10px;
+}
+
+.division-avatars {
+    display: flex;
+}
+
+.battle-tag {
+    display: flex;
+}
+
+.entry-card .win-loss-ratio {
+    min-width: 6%;
+    background-color: brown;
+}
+
+.column-name {
     font-weight: bold;
-    min-width: 50px;
 }
 
-.entry-card .column-name.battle-tags {
-    margin-left: 50px;
+.column-name.rank_left {
+    display: flex;
+    margin-left: 2.5%;
+    margin-right: 2.0%;
+}
+
+.entry-card.race.human {
+    background-image: url('/static/myapp/img/races/PlayerProfile_ColoredCrest_Human.png');
+    background-repeat: no-repeat;
+    background-blend-mode: screen;
+    background-position-x: 25%;
+}
+
+.entry-card.race.undead {
+    background-image: url('/static/myapp/img/races/PlayerProfile_ColoredCrest_Undead.png');
+    background-repeat: no-repeat;
+    background-blend-mode: screen;
+    background-position-x: 25%;
+}
+
+.entry-card.race.orc {
+    background-image: url('/static/myapp/img/races/PlayerProfile_ColoredCrest_Orc.png');
+    background-repeat: no-repeat;
+    background-blend-mode: screen;
+    background-position-x: 25%;
+}
+
+.entry-card.race.night_elf {
+    /*background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(58, 245, 114, 0.103)), url('/static/myapp/img/races/PlayerProfile_ColoredCrest_NightElf.png');*/
+    background-image: url('/static/myapp/img/races/PlayerProfile_ColoredCrest_NightElf.png');
+    background-repeat: no-repeat;
+    background-blend-mode: normal;
+    background-position-x: 25%;
+    background-position-y: 0%;
+}
+
+.entry-card.race.random {
+    background-image: url('/static/myapp/img/races/PlayerProfile_ColoredCrest_Random.png');
+    background-repeat: no-repeat;
+    background-blend-mode: normal;
+    background-position-x: 25%;
+    background-position-y: 0%;
+}
+
+.entry-card .race.random {
+    background: -webkit-linear-gradient(#00000038, rgb(255,255,255));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.entry-card .race.undead {
+    background: -webkit-linear-gradient(#ffffff, rgb(248, 36, 255));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.entry-card .race.orc {
+    background: -webkit-linear-gradient(#ffffff,  rgb(255, 233, 38));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.entry-card .race.night_elf {
+    background: -webkit-linear-gradient(#ffffff, rgb(4, 128, 0));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.entry-card .race.human {
+    background: -webkit-linear-gradient(#ffffff, rgb(46, 49, 255));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#prev-5-pages,
+#next-5-pages {
+    width: 20px;
+    height: 20px;
+    background-color: transparent; /* Set background color to transparent */
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    vertical-align: middle; /* Align vertically with the adjacent inline elements */
+    margin: 1% 0%;
+    cursor: pointer;
+    border-radius: 4px;
+
+    /* Center the image */
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#prev-page,
+#next-page {
+    width: 40px;
+    height: 40px;
+    background-color: transparent; /* Set background color to transparent */
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    vertical-align: middle; /* Align vertically with the adjacent inline elements */
+    margin: 1% 1%;
+    cursor: pointer;
+    border-radius: 4px;
+
+    /* Center the image */
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#prev-5-pages,
+#prev-page {
+    background-image: url('/static/myapp/img/arrows/arrow-left-icon-resting.png');
+}
+
+#prev-5-pages:hover,
+#prev-page:hover {
+    background-image: url('/static/myapp/img/arrows/arrow-left-icon-hover.png');
+}
+
+#next-5-pages,
+#next-page {
+    background-image: url('/static/myapp/img/arrows/arrow-right-icon-resting.png');
+}
+
+#next-5-pages:hover,
+#next-page:hover {
+    background-image: url('/static/myapp/img/arrows/arrow-right-icon-hover.png');
+}
+
+
+#page-info {
+    margin: 0 10px; /* Add margin for better spacing */
+    background-color: rgba(0, 0, 0, 0.459);
+    width: fit-content;
+    padding-left: 100px;
+    padding-right: 100px;
+    border-radius: 50px;
+}
+
+
+.datetime {
+    font-size: 10px;
+    margin-bottom: 50px;
+}
+
+.custom-filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00000052;
+    padding-left: 14%;
+    padding-right: 14%;
+}
+
+/* Style each filter within custom filters */
+.custom-filters select {
+    padding: 4px; /* Adjust the padding to make it smaller */
+    font-size: 12px; /* Adjust the font size to make it smaller */
+    border-radius: 2px;
+    width: 100px; /* Adjust the width as needed */
+    margin-right: 100px; /* Adjust the spacing between filters */
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.856);
+}
+
+/* Style labels within custom filters */
+.custom-filters label {
+    font-size: 14px; /* Adjust the font size for labels */
+    font-weight: bold;
+    margin-right: 5px; /* Adjust the spacing between label and select */
+}
+
+
+@media only screen and (max-width: 800px) {
+    #entry-container {
+        display: flex;
+        flex-wrap: wrap;
+        padding-left: 0%;
+        padding-right: 0%;
+    }
+
+    .entry-card {
+        align-items: stretch;
+    }
+
+    .entry-card .column-name {
+        min-width: 10%;
+        text-align: center;
+    }
+
+    .entry-card .rank_left {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .entry-card .rank {
+        margin-left: 0;
+    }
+
+    .entry-card .race {
+        flex: 1;
+        margin-top: 10px;
+    }
+
+    .entry-card .division,
+    .entry-card .avatars-battle-tags,
+    .entry-card .mmr {
+        flex: 1;
+        margin-top: 10px;
+    }
+
+    .avatars {
+        margin-bottom: 5px;
+    }
 }
