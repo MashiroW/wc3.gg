@@ -1,0 +1,76 @@
+{
+  "messageType": "UpdateLeaderboardData",
+  "payload": {
+    "message": {
+      "region": "",
+      "gameMode": "3v3",
+      "race": "all",
+      "seasonId": 3,
+      "totalrows": 128,
+      "totalpages": 6,
+      "currentpage": 6,
+      "hasError": false,
+      "errorMessage": "",
+      "rows": [
+        {
+          "race": "night_elf",
+          "players": [
+            {
+              "toonName": "kaozXcore",
+              "battleTag": "kaozXcore#1823",
+              "avatarId": "p003",
+              "accountCreationTime": 18446744073234716659
+            }
+          ],
+          "region": "",
+          "mmr": 3176,
+          "gameMode": "",
+          "rank": 126,
+          "wins": 48,
+          "losses": 223,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "human",
+          "players": [
+            {
+              "toonName": "james27",
+              "battleTag": "james27#21416",
+              "avatarId": "p045",
+              "accountCreationTime": 1286426187
+            }
+          ],
+          "region": "",
+          "mmr": 3155,
+          "gameMode": "",
+          "rank": 127,
+          "wins": 822,
+          "losses": 2576,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "human",
+          "players": [
+            {
+              "toonName": "Maluco",
+              "battleTag": "Maluco#21416",
+              "avatarId": "",
+              "accountCreationTime": 18446744073470955585
+            }
+          ],
+          "region": "",
+          "mmr": 3145,
+          "gameMode": "",
+          "rank": 128,
+          "wins": 23,
+          "losses": 126,
+          "draws": 0,
+          "division": 2
+        }
+      ],
+      "lastAccessTime": 1706319234
+    }
+  }
+}

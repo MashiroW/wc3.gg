@@ -1,0 +1,190 @@
+{
+  "messageType": "UpdateLeaderboardData",
+  "payload": {
+    "message": {
+      "region": "",
+      "gameMode": "3v3",
+      "race": "all",
+      "seasonId": 4,
+      "totalrows": 1534,
+      "totalpages": 62,
+      "currentpage": 62,
+      "hasError": false,
+      "errorMessage": "",
+      "rows": [
+        {
+          "race": "random",
+          "players": [
+            {
+              "toonName": "HumaNStorY",
+              "battleTag": "HumaNStorY#3791",
+              "avatarId": "",
+              "accountCreationTime": 1197106916
+            }
+          ],
+          "region": "",
+          "mmr": 3616,
+          "gameMode": "",
+          "rank": 1526,
+          "wins": 160,
+          "losses": 424,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "human",
+          "players": [
+            {
+              "toonName": "glen71388",
+              "battleTag": "glen71388#2273",
+              "avatarId": "",
+              "accountCreationTime": 18446744073189067836
+            }
+          ],
+          "region": "",
+          "mmr": 3555,
+          "gameMode": "",
+          "rank": 1527,
+          "wins": 17,
+          "losses": 66,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "orc",
+          "players": [
+            {
+              "toonName": "GroßerOger",
+              "battleTag": "GroßerOger#2508",
+              "avatarId": "",
+              "accountCreationTime": 1143169978
+            }
+          ],
+          "region": "",
+          "mmr": 3546,
+          "gameMode": "",
+          "rank": 1528,
+          "wins": 5,
+          "losses": 39,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "random",
+          "players": [
+            {
+              "toonName": "Ashurbanipal",
+              "battleTag": "Ashurbanipal#11882",
+              "avatarId": "",
+              "accountCreationTime": 18446744071735744798
+            }
+          ],
+          "region": "",
+          "mmr": 3481,
+          "gameMode": "",
+          "rank": 1529,
+          "wins": 25,
+          "losses": 93,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "night_elf",
+          "players": [
+            {
+              "toonName": "james27",
+              "battleTag": "james27#21416",
+              "avatarId": "p027",
+              "accountCreationTime": 1286426187
+            }
+          ],
+          "region": "",
+          "mmr": 3451,
+          "gameMode": "",
+          "rank": 1530,
+          "wins": 42,
+          "losses": 168,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "undead",
+          "players": [
+            {
+              "toonName": "kalpa",
+              "battleTag": "kalpa#31618",
+              "avatarId": "",
+              "accountCreationTime": 18446744072267453601
+            }
+          ],
+          "region": "",
+          "mmr": 3386,
+          "gameMode": "",
+          "rank": 1531,
+          "wins": 3,
+          "losses": 22,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "human",
+          "players": [
+            {
+              "toonName": "TheTemplarXI",
+              "battleTag": "TheTemplarXI#2715",
+              "avatarId": "p093",
+              "accountCreationTime": 90652721
+            }
+          ],
+          "region": "",
+          "mmr": 3217,
+          "gameMode": "",
+          "rank": 1532,
+          "wins": 78,
+          "losses": 374,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "human",
+          "players": [
+            {
+              "toonName": "james27",
+              "battleTag": "james27#21416",
+              "avatarId": "p027",
+              "accountCreationTime": 1286426187
+            }
+          ],
+          "region": "",
+          "mmr": 2991,
+          "gameMode": "",
+          "rank": 1533,
+          "wins": 86,
+          "losses": 500,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "night_elf",
+          "players": [
+            {
+              "toonName": "lIlIlIlIlI",
+              "battleTag": "lIlIlIlIlI#31744",
+              "avatarId": "",
+              "accountCreationTime": 18446744072791379864
+            }
+          ],
+          "region": "",
+          "mmr": 2540,
+          "gameMode": "",
+          "rank": 1534,
+          "wins": 1,
+          "losses": 77,
+          "draws": 0,
+          "division": 1
+        }
+      ],
+      "lastAccessTime": 1707079553
+    }
+  }
+}

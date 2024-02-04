@@ -1,0 +1,75 @@
+{
+  "messageType": "UpdateLeaderboardData",
+  "payload": {
+    "message": {
+      "region": "",
+      "gameMode": "3v3arranged",
+      "race": "",
+      "seasonId": 4,
+      "totalrows": 252,
+      "totalpages": 11,
+      "currentpage": 11,
+      "hasError": false,
+      "errorMessage": "",
+      "rows": [
+        {
+          "race": "orc",
+          "players": [
+            {
+              "toonName": "Hensibiki",
+              "battleTag": "Hensibiki#1173",
+              "avatarId": ""
+            },
+            {
+              "toonName": "Doku",
+              "battleTag": "Doku#11313",
+              "avatarId": ""
+            },
+            {
+              "toonName": "Leeviiss",
+              "battleTag": "Leeviiss#1637",
+              "avatarId": ""
+            }
+          ],
+          "region": "",
+          "mmr": 4212,
+          "gameMode": "",
+          "rank": 251,
+          "wins": 4,
+          "losses": 20,
+          "draws": 0,
+          "division": 3
+        },
+        {
+          "race": "human",
+          "players": [
+            {
+              "toonName": "AtheistMonk",
+              "battleTag": "AtheistMonk#11665",
+              "avatarId": ""
+            },
+            {
+              "toonName": "FlukeWin",
+              "battleTag": "FlukeWin#1776",
+              "avatarId": "p019"
+            },
+            {
+              "toonName": "mountedurmom",
+              "battleTag": "mountedurmom#1875",
+              "avatarId": ""
+            }
+          ],
+          "region": "",
+          "mmr": 3868,
+          "gameMode": "",
+          "rank": 252,
+          "wins": 4,
+          "losses": 4,
+          "draws": 0,
+          "division": 2
+        }
+      ],
+      "lastAccessTime": 1707079855
+    }
+  }
+}

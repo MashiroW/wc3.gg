@@ -1,0 +1,433 @@
+{
+  "messageType": "UpdateLeaderboardData",
+  "payload": {
+    "message": {
+      "region": "",
+      "gameMode": "2v2arranged",
+      "race": "",
+      "seasonId": 3,
+      "totalrows": 18,
+      "totalpages": 1,
+      "currentpage": 1,
+      "hasError": false,
+      "errorMessage": "",
+      "rows": [
+        {
+          "race": "human",
+          "players": [
+            {
+              "toonName": "cH1LLeR",
+              "battleTag": "cH1LLeR#2698",
+              "avatarId": "p098"
+            },
+            {
+              "toonName": "zlAy",
+              "battleTag": "zlAy#2247",
+              "avatarId": "p089"
+            }
+          ],
+          "region": "",
+          "mmr": 6797,
+          "gameMode": "",
+          "rank": 1,
+          "wins": 25,
+          "losses": 0,
+          "draws": 0,
+          "division": 5
+        },
+        {
+          "race": "night_elf",
+          "players": [
+            {
+              "toonName": "CrankyPants",
+              "battleTag": "CrankyPants#2126351",
+              "avatarId": "p009"
+            },
+            {
+              "toonName": "mataleoa",
+              "battleTag": "mataleoa#2444",
+              "avatarId": "p049"
+            }
+          ],
+          "region": "",
+          "mmr": 5964,
+          "gameMode": "",
+          "rank": 2,
+          "wins": 147,
+          "losses": 52,
+          "draws": 0,
+          "division": 4
+        },
+        {
+          "race": "night_elf",
+          "players": [
+            {
+              "toonName": "eRRePe",
+              "battleTag": "eRRePe#2745",
+              "avatarId": "p056"
+            },
+            {
+              "toonName": "KR1me",
+              "battleTag": "KR1me#21446",
+              "avatarId": "p080"
+            }
+          ],
+          "region": "",
+          "mmr": 5828,
+          "gameMode": "",
+          "rank": 3,
+          "wins": 525,
+          "losses": 178,
+          "draws": 0,
+          "division": 4
+        },
+        {
+          "race": "human",
+          "players": [
+            {
+              "toonName": "herothe4got",
+              "battleTag": "herothe4got#2208",
+              "avatarId": "p088"
+            },
+            {
+              "toonName": "SavoyTruffle",
+              "battleTag": "SavoyTruffle#11694",
+              "avatarId": "p022"
+            }
+          ],
+          "region": "",
+          "mmr": 5711,
+          "gameMode": "",
+          "rank": 4,
+          "wins": 238,
+          "losses": 92,
+          "draws": 0,
+          "division": 4
+        },
+        {
+          "race": "undead",
+          "players": [
+            {
+              "toonName": "dJux",
+              "battleTag": "dJux#21450",
+              "avatarId": "p093"
+            },
+            {
+              "toonName": "NewVince",
+              "battleTag": "NewVince#2663",
+              "avatarId": "p113"
+            }
+          ],
+          "region": "",
+          "mmr": 5510,
+          "gameMode": "",
+          "rank": 5,
+          "wins": 62,
+          "losses": 25,
+          "draws": 0,
+          "division": 4
+        },
+        {
+          "race": "undead",
+          "players": [
+            {
+              "toonName": "Sheamus",
+              "battleTag": "Sheamus#2507",
+              "avatarId": "p030"
+            },
+            {
+              "toonName": "Mendeley",
+              "battleTag": "Mendeley#21290",
+              "avatarId": "p042"
+            }
+          ],
+          "region": "",
+          "mmr": 5297,
+          "gameMode": "",
+          "rank": 6,
+          "wins": 49,
+          "losses": 29,
+          "draws": 0,
+          "division": 4
+        },
+        {
+          "race": "human",
+          "players": [
+            {
+              "toonName": "Jin",
+              "battleTag": "Jin#16263",
+              "avatarId": ""
+            },
+            {
+              "toonName": "StephenZhou",
+              "battleTag": "StephenZhou#11101",
+              "avatarId": ""
+            }
+          ],
+          "region": "",
+          "mmr": 5223,
+          "gameMode": "",
+          "rank": 7,
+          "wins": 60,
+          "losses": 35,
+          "draws": 0,
+          "division": 4
+        },
+        {
+          "race": "human",
+          "players": [
+            {
+              "toonName": "Nuñez7",
+              "battleTag": "Nuñez7#2642",
+              "avatarId": "p036"
+            },
+            {
+              "toonName": "MooseMasher",
+              "battleTag": "MooseMasher#2323",
+              "avatarId": "p004"
+            }
+          ],
+          "region": "",
+          "mmr": 5197,
+          "gameMode": "",
+          "rank": 8,
+          "wins": 8,
+          "losses": 2,
+          "draws": 0,
+          "division": 4
+        },
+        {
+          "race": "undead",
+          "players": [
+            {
+              "toonName": "TasteOsteron",
+              "battleTag": "TasteOsteron#1151",
+              "avatarId": "p030"
+            },
+            {
+              "toonName": "Morrow",
+              "battleTag": "Morrow#2267",
+              "avatarId": "p045"
+            }
+          ],
+          "region": "",
+          "mmr": 5089,
+          "gameMode": "",
+          "rank": 9,
+          "wins": 150,
+          "losses": 124,
+          "draws": 0,
+          "division": 4
+        },
+        {
+          "race": "human",
+          "players": [
+            {
+              "toonName": "DiddlyDoodly",
+              "battleTag": "DiddlyDoodly#1943",
+              "avatarId": ""
+            },
+            {
+              "toonName": "Dbol",
+              "battleTag": "Dbol#11629",
+              "avatarId": ""
+            }
+          ],
+          "region": "",
+          "mmr": 5042,
+          "gameMode": "",
+          "rank": 10,
+          "wins": 135,
+          "losses": 109,
+          "draws": 0,
+          "division": 4
+        },
+        {
+          "race": "human",
+          "players": [
+            {
+              "toonName": "Mikeyofevil",
+              "battleTag": "Mikeyofevil#2224",
+              "avatarId": "p032"
+            },
+            {
+              "toonName": "FrostyFeet",
+              "battleTag": "FrostyFeet#2146947",
+              "avatarId": "p036"
+            }
+          ],
+          "region": "",
+          "mmr": 4947,
+          "gameMode": "",
+          "rank": 11,
+          "wins": 361,
+          "losses": 318,
+          "draws": 0,
+          "division": 3
+        },
+        {
+          "race": "orc",
+          "players": [
+            {
+              "toonName": "Титан",
+              "battleTag": "Титан#21426",
+              "avatarId": "p007"
+            },
+            {
+              "toonName": "МудраяСова",
+              "battleTag": "МудраяСова#226363",
+              "avatarId": "p004"
+            }
+          ],
+          "region": "",
+          "mmr": 4859,
+          "gameMode": "",
+          "rank": 12,
+          "wins": 2,
+          "losses": 3,
+          "draws": 0,
+          "division": 3
+        },
+        {
+          "race": "random",
+          "players": [
+            {
+              "toonName": "mando",
+              "battleTag": "mando#11306",
+              "avatarId": ""
+            },
+            {
+              "toonName": "Yhip",
+              "battleTag": "Yhip#1668",
+              "avatarId": ""
+            }
+          ],
+          "region": "",
+          "mmr": 4636,
+          "gameMode": "",
+          "rank": 13,
+          "wins": 38,
+          "losses": 44,
+          "draws": 0,
+          "division": 3
+        },
+        {
+          "race": "human",
+          "players": [
+            {
+              "toonName": "Gatifo",
+              "battleTag": "Gatifo#1420",
+              "avatarId": "p016"
+            },
+            {
+              "toonName": "Exaudi",
+              "battleTag": "Exaudi#11716",
+              "avatarId": ""
+            }
+          ],
+          "region": "",
+          "mmr": 4606,
+          "gameMode": "",
+          "rank": 14,
+          "wins": 5,
+          "losses": 11,
+          "draws": 0,
+          "division": 3
+        },
+        {
+          "race": "orc",
+          "players": [
+            {
+              "toonName": "PAPAJUST",
+              "battleTag": "PAPAJUST#2386",
+              "avatarId": "p005"
+            },
+            {
+              "toonName": "SurgicalGerm",
+              "battleTag": "SurgicalGerm#2370",
+              "avatarId": "p010"
+            }
+          ],
+          "region": "",
+          "mmr": 4404,
+          "gameMode": "",
+          "rank": 15,
+          "wins": 1,
+          "losses": 9,
+          "draws": 0,
+          "division": 3
+        },
+        {
+          "race": "undead",
+          "players": [
+            {
+              "toonName": "ENZLUGNOLL",
+              "battleTag": "ENZLUGNOLL#2722",
+              "avatarId": "p035"
+            },
+            {
+              "toonName": "FabioZ",
+              "battleTag": "FabioZ#21413",
+              "avatarId": "p104"
+            }
+          ],
+          "region": "",
+          "mmr": 4308,
+          "gameMode": "",
+          "rank": 16,
+          "wins": 24,
+          "losses": 36,
+          "draws": 0,
+          "division": 3
+        },
+        {
+          "race": "orc",
+          "players": [
+            {
+              "toonName": "Jhomao",
+              "battleTag": "Jhomao#1631",
+              "avatarId": ""
+            },
+            {
+              "toonName": "JoseMa",
+              "battleTag": "JoseMa#11476",
+              "avatarId": ""
+            }
+          ],
+          "region": "",
+          "mmr": 3984,
+          "gameMode": "",
+          "rank": 17,
+          "wins": 4,
+          "losses": 18,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "undead",
+          "players": [
+            {
+              "toonName": "Jam1889",
+              "battleTag": "Jam1889#2754",
+              "avatarId": "p105"
+            },
+            {
+              "toonName": "Gatsu92",
+              "battleTag": "Gatsu92#2779",
+              "avatarId": "p039"
+            }
+          ],
+          "region": "",
+          "mmr": 3691,
+          "gameMode": "",
+          "rank": 18,
+          "wins": 9,
+          "losses": 49,
+          "draws": 0,
+          "division": 2
+        }
+      ],
+      "lastAccessTime": 1706319311
+    }
+  }
+}

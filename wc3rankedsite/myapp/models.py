@@ -20,6 +20,8 @@ class GameSetting(models.Model):
     race = models.CharField(max_length=50)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    stats = models.JSONField(default=dict)  # Use django.db.models.JSONField
+
     def __str__(self):
         return f"S{self.season}_{self.gamemode}_{self.race} - {self.created_at}"
 
@@ -46,6 +48,10 @@ class Entry(models.Model):
     @property
     def player_battle_tags(self):
         return ', '.join(player.battleTag for player in self.players.all())
+    
+    @property
+    def player_avatars(self):
+        return ', '.join(player.last_avatarId for player in self.players.all())
 
     @property
     def season(self):

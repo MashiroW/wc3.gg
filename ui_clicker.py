@@ -380,9 +380,8 @@ def leaderboard_parser():
 
     global packets_sniffer
     startup_sequence()
-    
 
-    for season in ["previous"]:
+    for season in ["current"]:
         for gamemode in ["1v1", "2v2", "3v3", "4v4", "cps"]: # Possibilities: ["1v1", "2v2", "3v3", "4v4", "cps"]
             for race in ["all"]: # Possibilities: ["all", "random", "human", "night_elf", "orc", "undead"]
 
@@ -402,7 +401,7 @@ def leaderboard_parser():
                 startup_sequence()
 
 
-    for season in ["previous"]:
+    for season in ["current"]:
         for gamemode in ["confrontation_2v2", "confrontation_3v3", "confrontation_4v4"]: # "confrontation_2v2", "confrontation_3v3", "confrontation_4v4"
 
             print("Settings - Season: {0} - Race {1} - Gamemode {2}".format(season, "N/A", gamemode))
@@ -446,8 +445,6 @@ def get_window_resolution(process_name):
         return None
 
 if __name__ == "__main__":
-
-
 
     global packets_sniffer
     ressources_paths = collect_image_paths()

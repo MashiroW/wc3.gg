@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+APPEND_SLASH = False
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myapp'
+    'myapp',
+    'players',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +61,6 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'myapp', 'templates'),
-            os.path.join(BASE_DIR, 'myapp', 'templates', 'static'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {

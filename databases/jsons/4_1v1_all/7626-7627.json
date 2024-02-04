@@ -1,0 +1,57 @@
+{
+  "messageType": "UpdateLeaderboardData",
+  "payload": {
+    "message": {
+      "region": "",
+      "gameMode": "1v1",
+      "race": "all",
+      "seasonId": 4,
+      "totalrows": 7627,
+      "totalpages": 306,
+      "currentpage": 306,
+      "hasError": false,
+      "errorMessage": "",
+      "rows": [
+        {
+          "race": "orc",
+          "players": [
+            {
+              "toonName": "KnightGods",
+              "battleTag": "KnightGods#2127",
+              "avatarId": "p002",
+              "accountCreationTime": 18446744073577045621
+            }
+          ],
+          "region": "",
+          "mmr": 3210,
+          "gameMode": "",
+          "rank": 7626,
+          "wins": 1,
+          "losses": 20,
+          "draws": 0,
+          "division": 2
+        },
+        {
+          "race": "random",
+          "players": [
+            {
+              "toonName": "redkkk",
+              "battleTag": "redkkk#3409",
+              "avatarId": "",
+              "accountCreationTime": 18446744072730502799
+            }
+          ],
+          "region": "",
+          "mmr": 3203,
+          "gameMode": "",
+          "rank": 7627,
+          "wins": 55,
+          "losses": 135,
+          "draws": 0,
+          "division": 2
+        }
+      ],
+      "lastAccessTime": 1707079399
+    }
+  }
+}
